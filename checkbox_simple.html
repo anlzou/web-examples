@@ -1,0 +1,36 @@
+<!--
+ * @CreateDate  : 2020-03-30
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-03-30 15:09:55
+ * @FilePath    : \html\checkbox_simple.html
+ * @Describe    : 
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./js/checkobx.js"></script>
+</head>
+
+<body>
+    看书：<input type="checkbox" name="checkbox" value=1><br>
+    写字：<input type="checkbox" name="checkbox" value=2><br>
+    看电影：<input type="checkbox" name="checkbox" value=3><br>
+    玩游戏：<input type="checkbox" name="checkbox" value=4><br>
+    <button onclick="checkboxed('checkbox')">全选</button>
+    <button onclick="unCheckboxed('checkbox')">取消全选</button>
+    <button onclick="otherCheckboxed('checkbox')">反选</button>
+    <button onclick="allcheck()">全选/取消</button>
+    <!-- 
+        // 代码优化
+        <button onclick="opcheckboxed('checkbox', 'checkall')">全选</button>
+        <button onclick="opcheckboxed('checkbox', 'uncheckall')">取消全选</button>
+        <button onclick="opcheckboxed('checkbox', 'reversecheck')">反选</button>
+     -->
+</body>
+
+</html>

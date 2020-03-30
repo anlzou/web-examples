@@ -1,0 +1,34 @@
+<!--
+ * @Date        : 2020-03-29 10:50:34
+ * @LastEditors : anlzou
+ * @LastEditTime: 2020-03-29 12:02:11
+ * @FilePath    : \html\light.html
+ * @describe    : 
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+
+<body>
+
+    <script>
+        function changeImage(s) {
+            /*
+            以上实例中代码 element.src.match("bulbon") 的作用意思是：
+            检索 <img id="myimage" onclick="changeImage()" src="/images/pic_bulboff.gif" width="100" height="180"> 
+            里面 src 属性的值有没有包含 bulbon 这个字符串，如果存在字符串 bulbon，图片 src 更新为 bulboff.gif，
+            若匹配不到 bulbon 字符串，src 则更新为 bulbon.gif
+            */
+            s.src = s.src.match('bulboff') ? "./img/pic_bulbon.gif" : "./img/pic_bulboff.gif";
+        }
+    </script>
+    <img id="myimage" onclick="changeImage(this)" src="./img/pic_bulboff.gif" width="100" height="180">
+    <p>点击灯泡就可以打开或关闭这盏灯</p>
+
+</body>
+
+</html>

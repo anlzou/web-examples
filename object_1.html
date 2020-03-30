@@ -1,0 +1,39 @@
+<!--
+ * @Date        : 2020-03-29 22:38:26
+ * @LastEditors : anlzou
+ * @LastEditTime: 2020-03-29 22:43:03
+ * @FilePath    : \html\object_1.html
+ * @describe    : 
+ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>菜鸟教程(runoob.com)</title>
+</head>
+
+<body>
+
+    <p id="my">创建 JavaScript 对象。</p>
+    <p id="demo"></p>
+    <script>
+        var person = {
+            firstName: "John",
+            lastName: "Doe",
+            age: 50,
+            eyeColor: "blue"
+        };
+        var anlzou = {
+            firstName: "anlzou",
+            lastName: "anlzou",
+            age: 20,
+            eyeColor: "black"
+        };
+        document.getElementById("demo").innerHTML = person.firstName + " 现在 " + person.age + " 岁.";
+        document.getElementById("my").innerHTML = anlzou.firstName + "\t" + anlzou.lastName + "年龄：" + anlzou.age;
+    </script>
+
+</body>
+
+</html>
