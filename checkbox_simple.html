@@ -2,7 +2,7 @@
  * @CreateDate  : 2020-03-30
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-03-30 15:31:47
+ * @LastEditTime: 2020-04-01 20:24:01
  * @FilePath    : \html\checkbox_simple.html
  * @Describe    : 
  -->
@@ -24,13 +24,14 @@
     <button onclick="checkboxed('checkbox')">全选</button>
     <button onclick="unCheckboxed('checkbox')">取消全选</button>
     <button onclick="otherCheckboxed('checkbox')">反选</button>
+    &nbsp;&nbsp;&nbsp;&nbsp;
     <button onclick="allcheck()">全选/取消</button>
-    <!-- 
-        // 代码优化
-        <button onclick="opcheckboxed('checkbox', 'checkall')">全选</button>
-        <button onclick="opcheckboxed('checkbox', 'uncheckall')">取消全选</button>
-        <button onclick="opcheckboxed('checkbox', 'reversecheck')">反选</button>
-     -->
+    <input type="button" value="全选" onclick="allcheck2(this)">
+    <br>
+    <!-- 代码优化 -->
+    <button onclick="opcheckboxed('checkbox', 'checkall')">全选</button>
+    <button onclick="opcheckboxed('checkbox', 'uncheckall')">取消全选</button>
+    <button onclick="opcheckboxed('checkbox', 'reversecheck')">反选</button>
 </body>
 
 </html>
