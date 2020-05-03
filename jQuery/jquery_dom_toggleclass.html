@@ -1,0 +1,40 @@
+<!--
+ * @Date        : 2020-05-03 11:48:41
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-05-03 11:50:23
+ * @FilePath    : \Web_Test\jquery\jquery_dom_toggleclass.html
+ * @Describe    : 
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <style>
+        .blue {
+            color: blue;
+        }
+    </style>
+    <script src="../assets/js/jquery-3.3.1.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("button").click(function () {
+                $("h1,h2,p").toggleClass("blue");
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <h1 class="blue">标题 1</h1>
+    <h2 class="blue">标题 2</h2>
+    <p class="blue">这是一个段落。</p>
+    <p>这是另外一个段落。</p>
+    <br>
+    <button>切换 class</button>
+</body>
+
+</html>
