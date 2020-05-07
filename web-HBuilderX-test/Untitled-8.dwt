@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>标记语法及属性语法应用</title>
+    <style type = "text/css">
+		h2{text-align:center; background:#6699ff; padding:20px;}
+	</style>
+	</head>
+		
+	<body background="" text="red">
+    	<h2 align="center">新 &nbsp;年 &nbsp;寄 &nbsp;语</h2>
+        <hr size="2" color="#6600ff" width="100%"/>
+        <p align="left"> &nbsp;&nbsp;&nbsp;&nbsp;轻轻送上我忠诚的祈求和祝愿，祈求分别的时光像流水瞬间逝去，祝愿再会时，紧握我的手溢满友情和青春的力量。</p>
+        <p align="right"> &nbsp;&nbsp;&nbsp;&nbsp;有一种跌倒叫站起，有一种失落叫收获，有一种失败叫成功————坚强些，朋友，明天将属于你！</p>
+	</body>
+</html>

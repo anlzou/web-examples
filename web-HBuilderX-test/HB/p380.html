@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>状态栏滚动</title>
+		<script type="text/javascript">
+			var TimerID;
+			var dir = 1;
+			var str_num = 0;
+			var str = "欢迎来到javacript世界！";
+			function startStatus(){
+				//设定动态显示的状体栏信息
+				var str_space = "";
+				str_num = str_num + 1 *dir;
+				if(str_num > 50 || str_num < 0){dir = -1 * dir;}
+				for(var i = 0; i < str_num; i++){str_space += " ";}
+				window.status = str_space + str;
+			}
+			function MyStart(){
+				//状体栏滚动开始
+				TimerID = setInterval("startStatus();",100);
+			}
+			function MyStop(){
+				//状体栏滚动结束,并更新状态栏
+				clearInterval(TimerID);
+				window.status = "状态栏移动结束！";
+			}
+		</script>
+	</head>
+	<body>
+		<center>
+			<br><p>单击对应的按钮，实现动态栏的滚动与停止！</p>
+			<form name="MyForm">
+				<input type="button" value="开始状态栏滚动" onclick="MyStart()"/><br>
+				<input type="button" value="停止状态栏滚动" onclick="MyStop()"/><br>
+			</form>
+		</center>
+	</body>
+</html>

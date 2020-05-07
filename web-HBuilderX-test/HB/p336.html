@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>JavaScript 中动态地指定</title>
+		<style type="text/css">
+			#inp{width: 100px;height: 40px;color: red;}
+		</style>
+		<script type="text/javascript">
+			function clickHandler(){
+				alert("代码触发事件，即将提交表单！");
+				return true;
+			}
+		</script>
+	</head>
+	<body>
+		<form action="" method="post" name="myform">
+			<input type="button" name="mybutton" id="inp" value="提交" />
+		</form>
+		<script type="text/javascript">
+			//向button元素动态分配onclick事件
+			document.getElementById("inp").onclick = function(){return clickHandler();};
+			myform.mybutton.onclick();	//事件触发
+		</script>
+	</body>
+</html>

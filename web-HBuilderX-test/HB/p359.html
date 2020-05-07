@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>日期对象的应用</title>
+	</head>
+	<body>
+		<h4>日期对象的应用</h4>
+		<script type="text/javascript">
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth() + 1;
+			var day = now.getDate()();
+			var hour = now.getHours();
+			var minute = now.getMinutes();
+			var second = now.getSeconds();
+			if(month < 10){month = "0" + month;}
+			if(day < 10){day = "0" + day;}
+			if(hour < 10){hour = "0" + hour;}
+			if(minute < 10){minute = "0" + minute;}
+			second = (second < 10)?("0" + second):second;	//
+			var str = year +"年" +month +"月" +day +"日" +hour +":" +minute +":" +second;
+			document.write(str);
+		</script>
+	</body>
+</html>

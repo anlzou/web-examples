@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>磁盘事件的应用</title>
+		<script type="text/javascript">
+			function checkNo(){
+				if(window.event.keyCode != 13){
+					if(event.keyCode < 48 || event.keyCode >57){alert("你输入的学号错误！");}
+				}else{
+					if(myform.sno.value.length <= 0){alert("学号不能为空");}
+					else{alert("你的学号为：" +myform.sno.value);}
+				}
+			}
+			function checkName(){
+				if(window.event.keyCode == 13){alert("你的姓名为：" +myform.sname.value);}
+			}
+		</script>
+	</head>
+	<body>
+		<h4>键盘事件的应用</h4>
+		<form action="" method="post" name="myform">
+			学号：<input type="text" name="sno" id="sno" value="" onkeypress="checkNo()">必须为数字<br>
+			姓名：<input type="text" name="sname" id="sname" value="" onkeypress="checkName()">回车显示姓名<br>
+			<input type="submit" value="提交" ><input type="reset" value="重置">
+		</form>
+	</body>
+</html>

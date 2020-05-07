@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>下拉菜单</title>
+		<script language="JavaScript" type="text/javascript">
+			function $(id){return document.getElementById(id);}	//获取元素
+			function changeImage(){
+				var index = $('game').selectedIndex;			//获取下拉框中选项
+				$('show').src = $('game').options[index].value;	//获取图片
+			}
+		</script>
+	</head>
+	<body>
+		<div id="" align="center">
+			<form>
+				<select id="game" onchange="changeImage()">
+					<option value ="./poto/c_1.png">--请选择--</option>
+					<option value ="./poto/c_2.png">平板电脑</option>
+					<option value ="./poto/c_3.png">笔记本电脑</option>
+					<option value ="./poto/c_1.png">单方相机</option>
+					<option value ="./poto/c_2.png">智能手机</option>
+				</select>
+			</form>
+		</div>
+		<p align="center">
+			<img src="./poto/c_3.jpg" id="show">
+		</p>
+	</body>
+</html>

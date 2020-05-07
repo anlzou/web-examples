@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>嗒嗒嗒哒哒哒</title>
+		<style type="text/css">
+			body{text-align: center;}
+			tr{font-family: "arial narrow";font-size: 9pt;text-align: left;}
+			#td1{text-align: center;font-family: "bodoni mt black"; font-size: 22px;color: #d10000;line-height: 30px;padding: 8px 10px 15px 10px;}
+			#p1{text-align: right;}
+			#p2{text-indent: 2em;}
+			#td2{text-align: left;vertical-align: top;font-family: "arial black";font-size: 14px;color: #333333;line-height: 26px;}
+		</style>
+		<script language="JavaScript">							//type="text/javascript"
+			function doZoom(size){			//改变字号
+				document.getElementById("zoom").style.fontSize = size + 'px';
+			}
+			function ChangeColor(ColorName){
+				document.getElementById("c").style.background = ColorName;
+			}
+		</script>
+	</head>
+	<body>
+		<table width="100%" style="border: 1px solid #d5d5d5">
+			<tr>
+				<td width="80%" style="padding: 30px 40px;">
+					<table id="c">
+						<tr>
+							<td id="td1">论文展示</td>
+						</tr>
+						<tr>
+							<td height="5" background="line.png"></td>
+						</tr>
+						<tr>
+							<td height="28" align="center">
+								<span>日期：2010-12-30</span>
+								<span>来源：经典话剧</span>
+								<span>浏览次数：</span>
+								<span>
+									字号：[
+										<a href = "javacript:doZoom(16)">大</a>
+										<a href = "javacript:doZoom(14)">中</a>
+										<a href = "javacript:doZoom(12)">小</a>]
+								</span>
+								<span style="padding-left: 10px;">视力保护色：
+									<input onclick="ChangeColor('#f9f6af')" type="image" src="color1.gif" height="13" width="13"/>
+									<input onclick="ChangeColor('#9ddbf4')" type="image" src="color2.gif" height="13" width="13"/>
+									<input onclick="ChangeColor('#dedede')" type="image" src="color3.gif" height="13" width="13"/>
+									<input onclick="ChangeColor('#f9d1d9')" type="image" src="color4.gif" height="13" width="13"/>
+									<input onclick="ChangeColor('#e4c8f8')" type="image" src="color5.gif" height="13" width="13"/>
+									<input onclick="ChangeColor('#ffffff')" type="image" src="color6.gif" height="13" width="13"/>
+								</span>
+							</td>
+						</tr>
+						<tr>
+							<td id="td2">
+								<div id="zoom">
+									
+									<p id="p2">如果说过去十年是PC时代，那么未来十年就应该称为手机时代，我们知道Android系统的手机非常红火，上面的应用也越来越丰富，甚至有时Windows 电脑的用户还会嫉妒手机上的软件或游戏做得特别精致有趣，譬如热门的水果忍者、愤怒的小鸟、Instagram 等等，有时候真希望能在电脑上也可以玩到它们。</p>
+									<p id="p1">就看电视看附件</p>
+									
+								</div>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

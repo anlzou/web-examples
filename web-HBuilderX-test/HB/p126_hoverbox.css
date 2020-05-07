@@ -1,0 +1,72 @@
+/*-----*/
+*{				/*全局声明*/
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+/*  =Basic HTML,Non-essential
+ ---------------------------------------------------------------------*/
+a{
+	text-decoration: none;
+}
+div{					/*定义图层的样式*/ 
+	width: 720px;
+	height: 500px;
+	margin: 0 auto;
+	padding: 30px;
+	text-align: center;
+}
+body{
+	position: relative;
+	text-align: center;
+}
+h1{
+	background: inherit;
+	border-bottom: 1px dashed #098;
+	color: #000099;
+	font: 17px georgia,serif;
+	margin: 0 0 10px;
+	padding: 0 0 35px;
+	text-align: center;
+}
+/*  =Hoverbox Code
+--------------------------------------------------------------------------*/
+.hoverbox{cursor: default;list-style: none;}
+.hoverbox a{cursor: default;}
+.hoverbox a .preview{display: none;} 		/*大图初始加载为不显示*/
+.hoverbox a:hover .preview{
+	display: block;
+	position: absolute;
+	top: -33px;
+	left: -45px;
+	z-index: 1;
+}
+.hoverbox img{
+	background: #fff;
+	border-color: #aaa #ccc #ddd #bbb;
+	border-style: solid;
+	border-width: 1px;
+	color: inherit;
+	padding: 2px;
+	vertical-align: top;
+	width: 100px;
+	height: 75px;
+}
+.hoverbox li{
+	background: #eee;
+	border-color: #ddd #bbb #aaa #ccc;
+	border-style: solid;
+	border-width: 1px;
+	color: inherit; 
+	float: left;				/*设置图像向左浮动*/
+	display: inline;			/*设置行内显示*/
+	margin: 3px;
+	padding: 5px;
+	position: relative;
+}
+.hoverbox .preview{
+	border-color: #000;
+	width: 200px;
+	height: 150px;
+}
+ul{padding: 40px;margin: 0 auto;}
