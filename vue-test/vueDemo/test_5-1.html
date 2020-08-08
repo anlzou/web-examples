@@ -1,0 +1,44 @@
+<!--
+ * @Date        : 2020-08-08 17:02:15
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-08 17:10:10
+ * @FilePath    : \web-test\vue-test\vueDemo\test_5-1.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        针对表达式的应用和多个属性参数的使用
+     -->
+    <div id="app-1">
+        {{message | capitalize('!', lable, 1<2?true:false)}}
+    </div>
+    <script>
+        var nv_1 = new Vue({
+            el: '#app-1',
+            data: {
+                message: 'anlzou',
+                lable: '----'
+            },
+            filters: {
+                capitalize: function (value, value2, value3, value4) {//message,!,lable,1<2
+                    if (!value) return ''
+                    value = value.toString()
+                    return value.charAt(0).toUpperCase() + value.slice(1) + value2 + value3 + value4
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
