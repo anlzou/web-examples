@@ -1,0 +1,44 @@
+<!--
+ * @Date        : 2020-08-08 01:01:09
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-08 11:09:23
+ * @FilePath    : \vue\vueDemo\test_4.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <div id="vue_test">
+        <h1>site: {{site}}</h1>
+        <h1>url: {{url}}</h1>
+        <!-- details:细节 -->
+        <h1>{{details()}}</h1>
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#vue_test',
+            data: {
+                site: '菜鸟',
+                url: 'wwww.abc.com',
+                alexa: '24'
+            },
+            methods: {
+                details: function () {
+                    return this.site + " - 学的不仅是技术，更是梦想！";
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

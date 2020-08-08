@@ -1,0 +1,56 @@
+<!--
+ * @Date        : 2020-08-07 22:49:40
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-07 23:10:42
+ * @FilePath    : \vue\vueDemo\test_3.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./jquery-3.5.1.js"></script>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="click_me">
+        <input id="value_1"></input>
+        <button v-on:click="create">点击</button>
+    </div>
+
+    <script>
+        var data = { a: 1 }
+        var vm = new Vue({
+            el: '#example',
+            data: data
+        })
+
+        console.log(vm.$data === data) // => true
+        console.log(vm.$el === document.getElementById('example')) // => true
+
+        // $watch 是一个实例方法
+        var x1 = vm.$watch('a', function (newValue, oldValue) {
+            // 这个回调将在 `vm.a` 改变后调用
+        })
+        console.log(x1)
+
+        new Vue({
+            el: '#click_me',
+            data: {
+                a: $("#value_1").val()
+            },
+            methods: {
+                create: function () {
+                    console.log('a is:' + this.a)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
