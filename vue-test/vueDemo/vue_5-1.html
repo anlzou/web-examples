@@ -2,7 +2,7 @@
  * @Date        : 2020-08-08 17:02:15
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-08-08 17:10:10
+ * @LastEditTime: 2020-08-09 16:26:54
  * @FilePath    : \web-test\vue-test\vueDemo\test_5-1.html
  * @Describe    : 
 -->
@@ -23,6 +23,19 @@
     <div id="app-1">
         {{message | capitalize('!', lable, 1<2?true:false)}}
     </div>
+    <br>
+    <!-- 
+        if else
+     -->
+    <div id="app-2">
+        <div v-if="Num>0.5">
+            随机数为 {{Num}} 大于0.5
+        </div>
+        <div v-else>
+            随机数为 {{Num}} 小于0.5
+        </div>
+    </div>
+
     <script>
         var nv_1 = new Vue({
             el: '#app-1',
@@ -37,7 +50,14 @@
                     return value.charAt(0).toUpperCase() + value.slice(1) + value2 + value3 + value4
                 }
             }
-        })
+        });
+
+        var nv_2 = new Vue({
+            el: "#app-2",
+            data: {
+                Num: Math.random()
+            }
+        });
     </script>
 </body>
 
