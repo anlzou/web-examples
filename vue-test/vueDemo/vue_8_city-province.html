@@ -1,0 +1,94 @@
+<!--
+ * @Date        : 2020-08-09 18:13:00
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-09 18:29:36
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_8_city-province.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        省市联动
+     -->
+    <div id="app">
+        <select v-model="province">
+            <option selected="selected">
+                请选择
+            </option>
+            <option v-bind:value="p" v-for="p in provinces">
+                {{p}}
+            </option>
+        </select>
+        城市：
+        <select v-model="city">
+            <option selected="selected">
+                请选择
+            </option>
+            <option v-bind:value="c" v-for="c in cityList">
+                {{c}}
+            </option>
+        </select>
+    </div>
+
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                city: '请选择',
+                province: '请选择',
+                provinces: ['广东', '湖南', '湖北', '北京'],
+                cityList: [],
+                area: [{
+                    name: '广东',
+                    id: 1,
+                    child: ['广州', '深圳', '东莞']
+                },
+                {
+                    name: '湖南',
+                    id: 2,
+                    child: ['长沙', '株洲', '湘潭']
+                },
+                {
+                    name: '湖北',
+                    id: 3,
+                    child: ['武汉']
+                },
+                {
+                    name: '北京',
+                    id: 4,
+                    child: ['北京']
+                }]
+            },
+            watch: {
+                province: function (nval, oval) {
+                    var self = this;
+                    var cityList = [];
+                    if (nval == '请选择') {
+                        this.citylist = [];
+                    }
+                    if (nval != oval) {
+                        for (var i = 0; i < self.area.length; i++) {
+                            if (self.area[i].name == nval) {
+                                cityList = self.area[i].child;
+                            }
+                        }
+                        this.city = "请选择";
+                        this.cityList = cityList;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
