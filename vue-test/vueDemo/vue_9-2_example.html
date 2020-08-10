@@ -1,0 +1,86 @@
+<!--
+ * @Date        : 2020-08-10 18:19:51
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-10 18:36:55
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_9-2_example.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        动态绑定
+     -->
+    <div id="dynamic">
+        <div v-bind:style="{color: 'red', fontSize: fontSize + 'px'}">可以动态调节</div>
+        <div v-bind:style="objectStyle"> 不可以动态调节</div>
+        {{fontSize}}
+        <button @click="++fontSize">+</button>
+        <button @click="--fontSize">-</button>
+    </div>
+    <br>
+
+    <!-- 
+        能用 computed 的都能转换成 methods，但是用 methods 的时候就是一个方法，所以在属性后面的指向的应该是方法而不是对象，需要加上括号之后就能够生效了
+     -->
+    <div id="app">
+        <div v-bind:style="{color: 'red', fontSize: size + 'px'}">可以动态调节</div>
+        <div v-bind:style="computedStyle">可以动态调节</div>
+        <div v-bind:style="objectStyle"> 不可以动态调节</div>
+        <div v-bind:style="methodStyle()"> 不可以动态调节</div>
+
+        {{size}}
+        <button @click="++size">+</button>
+        <button @click="--size">-</button>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#dynamic',
+            data: {
+                fontSize: 20,
+                objectStyle: {
+                    color: 'green',
+                    fontSize: this.fontSize + 'px'
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app',
+            data: {
+                size: 20,
+                objectStyle: {
+                    color: 'green',
+                    fontSize: this.size + 'px'
+                }
+            },
+            methods: {
+                methodStyle: function () {
+                    return { color: 'green', fontSize: this.size + 'px' };
+                }
+            },
+            computed: {
+                computedStyle: function () {
+                    return { color: 'red', fontSize: this.size + 'px' };
+                }
+            },
+            watch: {
+                size: function () {
+                    this.objectStyle.fontSize = this.size + 'px'
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

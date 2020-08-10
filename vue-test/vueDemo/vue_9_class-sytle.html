@@ -1,0 +1,195 @@
+<!--
+ * @Date        : 2020-08-10 17:34:21
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-10 18:17:29
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_9_class-sytle.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+
+    <style>
+        .base {
+            width: 100px;
+            height: 100px;
+        }
+
+        .active {
+            width: 100px;
+            height: 100px;
+            background: green;
+        }
+
+        .text-danger {
+            background: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+            class 属性设置
+            为 v-bind:class 设置一个对象，从而动态的切换class
+            红色把绿色覆盖
+            等价于原来的 <div class="static active text-danger"></div>
+         -->
+    <div id="app-1">
+        <div class="static" v-bind:class="{active : isActive, 'text-danger' : hasError}"></div>
+    </div>
+    <br>
+
+    <!-- 
+        class 可以写在 vue 对象中, 加不加引号都可以，例如‘a-b’可以避免减法运算
+     -->
+    <div id="app-2">
+        <div v-bind:class="classObject"></div>
+    </div>
+    <br>
+
+    <!-- 
+        绑定返回对象的计算属性。这是一个常用且强大的模式
+     -->
+    <div id="app-3">
+        <div v-bind:class="classObject"></div>
+    </div>
+    <br>
+
+    <!-- 
+        可以把一个数组传给 v-bind:class
+        等价于 <div class="active text-danger"></div>
+     -->
+    <div id="app-4">
+        <div v-bind:class="[activeClass, errorClass]"></div>
+    </div>
+    <br>
+
+    <!-- 
+        errorClass 是始终存在的，isActive 为 true 时添加 activeClass 类
+     -->
+    <div id="app-5">
+        <div v-bind:class="[errorClass, isActive ? activeClass : '']"></div>
+    </div>
+    <br>
+
+    <!-- 
+        Vue.js style(内联样式)
+        我们可以在 v-bind:style 直接设置样式：
+        等价于 <div style="color: green; font-size: 30px;">菜鸟教程</div>
+     -->
+    <div id="app-6">
+        <div v-bind:style="{ color:activeColor, fontSize:font + 'px'}">anlzou</div>
+    </div>
+    <br>
+
+    <!-- 
+        绑定到对象中
+     -->
+    <div id="app-7">
+        <div v-bind:style="styleObject">hello</div>
+    </div>
+    <br>
+
+    <!-- 
+        v-bind:style 可以使用数组将多个样式对象应用到一个元素上
+     -->
+    <div id="app-8">
+        <div v-bind:style="[baseStyles, overridingStyles]">菜鸟教程</div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app-1',
+            data: {
+                isActive: true,
+                hasError: true
+            }
+        });
+
+        new Vue({
+            el: '#app-2',
+            data: {
+                classObject: {
+                    active: true,
+                    'text-danger': true
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app-3',
+            data: {
+                isActive: true,
+                error: {
+                    value: true,
+                    type: 'fatal'
+                }
+            },
+            computed: {
+                classObject: function () {
+                    return {
+                        base: true,
+                        active: this.isActive && !this.error.value,
+                        'text-danger': this.error.value && this.error.type === 'fatal',
+                    }
+                }
+            },
+        });
+
+        new Vue({
+            el: '#app-4',
+            data: {
+                activeClass: 'active',
+                errorClass: 'text-danger'
+            }
+        });
+
+        new Vue({
+            el: '#app-5',
+            data: {
+                isActive: true,
+                activeClass: 'active',
+                errorClass: 'text-danger'
+            }
+        });
+
+        new Vue({
+            el: '#app-6',
+            data: {
+                activeColor: 'blue',
+                font: 100
+            }
+        });
+
+        new Vue({
+            el: '#app-7',
+            data: {
+                styleObject: {
+                    color: 'red',
+                    fontSize: '40px'
+                }
+            }
+        });
+
+        new Vue({
+            el: '#app-8',
+            data: {
+                baseStyles: {
+                    color: "green",
+                    fontSize: '60px'
+                },
+                overridingStyles: {
+                    'font-weight': 'bold'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
