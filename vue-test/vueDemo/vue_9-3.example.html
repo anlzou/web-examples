@@ -1,0 +1,148 @@
+<!--
+ * @Date        : 2020-08-10 18:39:43
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-10 18:40:50
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_9-3.example.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+
+    <style>
+        .class1 {
+            color: blue;
+            background-color: cyan;
+        }
+
+        .class2 {
+            font-size: 30px;
+        }
+
+        .class3 {
+            width: 200px;
+            height: 200px;
+            background-color: rgba(30, 30, 30, 0.6);
+        }
+
+        .p-style {
+            letter-spacing: 10px;
+            color: red;
+        }
+
+        .div-style {
+            border-radius: 20px;
+            text-align: center;
+            color: orange;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mydiv" style="margin-bottom: 50px;">
+        <!-- 特别注意：带有连字符的类名要用引号括起来,不管在哪里调用都需要。另外，对于有连字符的样式，要么采用驼峰写法，要么也加引号 -->
+        <p v-bind:class="{class1: getclass1, 'p-style': getp_style}">我是样式操作的示例对象，请善待我呦</p>
+        <!-- 注意：这里的对象是判断对象内部的类是否被启用 -->
+        <h3 v-bind:class="styleobj">使用样式对象设置样式</h3>
+        <div v-bind:class="judegeuse">使用computed计算样式的渲染条件</div>
+        <!-- 使用数组格式,只能是对象，不能使用p的格式和option1的格式 -->
+        <details v-bind:class="[styleobj, vuedivstyle]">
+            <optgroup label="第一组">
+                <!-- 使用条件表达式 -->
+                <option value="" v-bind:class="getp_style?vuepstyle:''">使用条件表达式.元素1</option>
+                <option value="">元素2</option>
+            </optgroup>
+        </details>
+        <!-- 内联样式,直接改变style属性 -->
+        <div :style="{width:'200px',height:'200px','background-color':'pink',borderRadius: radiussize+'px'}">
+            内联样式,直接改变style属性</div>
+        <div :style="[sizestyle ,fontstyle, colorstyle]">将样式作为对象，使用数组的形式进行调用，当只有一个时可以直接调用</div>
+        <!-- 动态变化字体大小 -->
+        <span v-bind:style="fontstyle">动态变化字体大小</span>
+        <input type="button" value="改变字体大小" @click="size++">
+        <input type="button" value="增加圆角" @click="radiussize+=5">
+        <input type="button" value="改变颜色" @click="changecolor">
+        <input type="button" value="调整尺寸" @click="changesize">
+        <input type="text" v-model="gettext">
+        <b>{{ gettext }}</b>
+    </div>
+
+    <script>
+        var myvue = new Vue({
+            el: '#mydiv',
+            data: {
+                gettext: '',
+                getclass1: true,
+                getclass2: false,
+                getp_style: true,
+                // 这里的key是类名，value是boolean值。下面的vue+class的value才是类名，key是自定义的类的实例化对象。注意区分
+                styleobj: {
+                    class1: true,
+                    class2: true,
+                    'p-style': false  // 这里也需要将带有连字符的样式用引号括起来
+                },
+                getdiv_style: {  // 定义样式调用条件
+                    number1: true,
+                    number2: false
+                },
+                // 下面几个其实可以理解为 伪类实例化
+                vueclass1: 'class1',
+                vueclass2: 'class2',
+                vuedivstyle: 'div-style',
+                vuepstyle: 'p-style',
+                // 动态改变字体大小
+                size: 15,
+                fontstyle: { // 绑定样式对象
+                    fontSize: 25 + 'px',
+                    fontWeight: 'bold'
+                },
+                colors: ['red', 'blue', 'cyan', 'pink', 'orange', 'yellow', 'black', 'white', 'purple'],  // 动态改变颜色需要的颜色数组
+                colorstyle: {
+                    color: 'red',
+                    backgroundColor: 'blue',
+                    borderRadius: '20px'
+                },
+                sizestyle: {
+                    width: '300px',
+                    height: '100px'
+                },
+                radiussize: 10
+            },
+            watch: {
+                size: function () {
+                    this.fontstyle.fontSize = this.size + 'px'
+                },
+                gettext: function (str) {  // 适用于只要填入内容就改变样式
+                    str ? this.getdiv_style.number1 = false : this.getdiv_style.number1 = true
+                }
+            },
+            methods: {
+                changecolor: function () { // 改变颜色
+                    this.colorstyle.backgroundColor = this.colors[Math.floor(Math.random() * this.colors.length)]
+                    this.colorstyle.color = this.colors[Math.floor(Math.random() * this.colors.length)]
+                },
+                changesize: function () {  // 改变尺寸
+                    this.sizestyle.width = parseInt(this.sizestyle.width) + 50 + 'px'
+                    this.sizestyle.height = parseInt(this.sizestyle.height) + 20 + 'px'
+                }
+            },
+            computed: {
+                judegeuse: function () { // 判断是否使用某个/些类
+                    return {
+                        class1: false,
+                        class3: true,
+                        'div-style': this.getdiv_style.number1 && !this.getdiv_style.number2  // 这里也需要将带有连字符的样式用引号括起来
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
