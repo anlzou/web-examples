@@ -1,0 +1,57 @@
+<!--
+ * @Date        : 2020-08-11 14:43:47
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-11 14:52:43
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_13_costom-directive.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        Vue 也允许注册自定义指令
+        实例等价于
+        input type="text" autofocus='autofocus'> 
+
+        可以在实例使用 directives 选项来注册局部指令，这样指令只能在这个实例中使用
+    -->
+    <div id="app-1">
+        <p>页面载入时，input 元素自动获取焦点</p>
+        <input type="text" v-focus>
+    </div>
+    <br>
+
+    <script>
+        Vue.directive('focus', {
+            inserted: function (el) {
+                el.focus()
+            }
+        })
+
+        new Vue({
+            el: '#app-1',
+        });
+
+        new Vue({
+            el: '#app-2',
+            directives: {
+                focus: {
+                    inserted: function (el) {
+                        el.focus()
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
