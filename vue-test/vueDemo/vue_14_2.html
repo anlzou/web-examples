@@ -1,0 +1,63 @@
+<!--
+ * @Date        : 2020-08-11 17:01:53
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-11 17:11:21
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_14_2.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+    <style>
+        /* 可以设置不同的进入和离开动画 */
+        /* 设置持续时间和动画函数 */
+        .slide-fade-enter-active {
+            transition: all .3s ease;
+        }
+
+        .slide-fade-leave-active {
+            transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+        }
+
+        /* .slide-fade-leave-active 用于 2.1.8 以下版本 */
+        .slide-fade-enter,
+        .slide-fade-leave-to {
+            transform: translateX(10px);
+            opacity: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        CSS 过渡
+        通常我们都使用 CSS 过渡来实现效果。
+    -->
+    <div id="app-1">
+        <button @click="show = !show">点击</button>
+        <transition name="slide-fade">
+            <p v-if="show" v-bind:style="my_style">anlzou</p>
+        </transition>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app-1',
+            data: {
+                show: true,
+                my_style: {
+                    fontSize: '30px',
+                    color: 'red'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

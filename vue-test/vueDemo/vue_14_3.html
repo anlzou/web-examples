@@ -1,0 +1,78 @@
+<!--
+ * @Date        : 2020-08-11 17:12:24
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-11 17:21:45
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_14_3.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./vue.js"></script>
+    <style>
+        .bounce-enter-active {
+            animation: bounce-in .5s;
+        }
+
+        .bounce-leave-active {
+            animation: bounce-in .5s reverse;
+        }
+
+        @keyframes bounce-in {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        css 动画
+        CSS 动画用法类似 CSS 过渡，但是在动画中 v-enter 类名在节点插入 DOM 后不会立即删除，而是在 animationend 事件触发时删除。
+    -->
+    <div id="app-1">
+        <button v-on:click="show = !show">点我</button>
+        <transition name="bounce">
+            <p v-if="show" v-bind:style="my_style">菜鸟教程 -- 学的不仅是技术，更是梦想！！！</p>
+        </transition>
+    </div>
+    <script>
+        new Vue({
+            el: '#app-1',
+            data: {
+                show: true,
+                my_style: {
+                    fontSize: "30px",
+                    color: 'green'
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
+
+<!-- 
+    自定义过渡的类名
+    我们可以通过以下特性来自定义过渡类名：
+    1. enter-class
+    2. enter-active-class
+    3. enter-to-class (2.1.8+)
+    4. leave-class
+    5. leave-active-class
+    6. leave-to-class (2.1.8+)
+ -->
