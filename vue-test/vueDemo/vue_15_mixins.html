@@ -1,0 +1,73 @@
+<!--
+ * @Date        : 2020-08-12 15:06:28
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-12 15:20:13
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_15_mixins.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/js/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        如果 methods 选项中有相同的函数名，则 Vue 实例优先级会较高。
+    -->
+    <div id="databinding"></div>
+    <br>
+
+    <script>
+        // 1
+        var mixin = {
+            methods: {
+                helloworld: function () {
+                    document.write('HelloWorld 方法' + '<br>');
+                },
+                samemethod: function () {
+                    document.write('Mixin：相同方法名' + '<br>');
+                }
+            }
+        };
+
+        var vm = new Vue({
+            mixins: [mixin],
+            methods: {
+                start: function () {
+                    document.write('start 方法' + '<br>');
+                },
+                samemethod: function () {
+                    document.write('Main：相同方法名' + '<br>');
+                }
+            }
+        });
+
+        vm.helloworld();
+        vm.start();
+        vm.samemethod();
+
+        // 2
+        // 为自定义的选项 'myOption' 注入一个处理器。
+        Vue.mixin({
+            created: function () {
+                var myOption = this.$options.myOption
+                if (myOption) {
+                    document.write(myOption)
+                }
+            }
+        })
+
+        new Vue({
+            myOption: 'hello!'
+        })
+// => "hello!"
+    </script>
+</body>
+
+</html>
