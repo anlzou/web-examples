@@ -1,0 +1,93 @@
+<!--
+ * @Date        : 2020-08-14 00:34:38
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-14 00:50:05
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_18_reactive.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        通过点击按钮计数器会加 1。setTimeout 设置 10 秒后计算器的值加上 20 。
+    -->
+    <div id="app">
+        <p style="font-size:25px;">计数器: {{ counter }}</p>
+        <button @click="counter++" style="font-size:25px;">点我</button>
+    </div>
+    <script type="text/javascript">
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                counter: 1
+            }
+        });
+        vm.$watch('counter', function (nval, oval) {
+            alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });
+        setTimeout(
+            function () {
+                vm.counter += 20;
+            }, 2000
+        );
+
+        /*
+            // 不能通过添加 Vue 对象来实现响应。 Vue 主要在开始时创建所有属性。
+            var myproduct = {"id":1, name:"book", "price":"20.00"};
+            var vm = new Vue({
+            el: '#app',
+            data: {
+                products: myproduct
+            }
+            });
+            vm.products.qty = "1";
+            console.log(vm);
+            vm.$watch('products.id', function(nval, oval) {
+            alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+            });
+        */
+
+        /*
+        // get/set 方法, 通过 Vue.set 来实现
+        var myproduct = {"id":1, name:"book", "price":"20.00"};
+        var vm = new Vue({
+        el: '#app',
+        data: {
+            products: myproduct
+        }
+        });
+        Vue.set(myproduct, 'qty', 1);
+        console.log(vm);
+        vm.$watch('products.id', function(nval, oval) {
+        alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });
+        */
+
+        /*
+        // Vue.delete 用于删除动态添加的属性
+        var myproduct = {"id":1, name:"book", "price":"20.00"};
+        var vm = new Vue({
+        el: '#app',
+        data: {
+            products: myproduct
+        }
+        });
+        Vue.delete(myproduct, 'price');
+        console.log(vm);
+        vm.$watch('products.id', function(nval, oval) {
+        alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });
+        */
+    </script>
+</body>
+
+</html>
