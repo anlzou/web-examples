@@ -2,9 +2,9 @@
  * @Date        : 2020-08-12 15:22:13
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-08-12 18:06:43
+ * @LastEditTime: 2020-08-12 18:58:39
  * @FilePath    : \web-test\vue-test\vueDemo\vue_16_ajax-axios.html
- * @Describe    : 
+ * @Describe    : error
 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -13,12 +13,66 @@
     <title>Document</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="">
-    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+    <script src="./assets/node_modules/vue/dist/vue.min.js"></script>
     <script src="./assets/node_modules/axios/dist/axios.min.js"></script>
 </head>
 
 <body>
+    <!-- 
+        1
+     -->
+    <div id="app-1">
+        {{info}}
+    </div>
+    <br>
 
+    <!-- 
+        2
+     -->
+    <div id="app-2">
+        <h1>网站列表</h1>
+        <div v-for="site in info">
+            {{ site.name }}
+        </div>
+    </div>
+
+    <script>
+        // 1
+        new Vue({
+            el: '#app-1',
+            data() {
+                return {
+                    info: null
+                }
+            },
+            mounted() {
+                axios
+                    .get('https://www.runoob.com/try/ajax/json_demo.json')
+                    .then(response => (this.info = response))
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            }
+        });
+
+        // 2
+        new Vue({
+            el: '#app-2',
+            data() {
+                return {
+                    info: null
+                }
+            },
+            mounted() {
+                axios
+                    .get('https://www.runoob.com/try/ajax/json_demo.json')
+                    .then(response => (this.info = response.data.sites))
+                    .catch(function (error) { // 请求失败处理
+                        console.log(error);
+                    });
+            }
+        });
+    </script>
 </body>
 
 </html>
