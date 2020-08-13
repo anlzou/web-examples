@@ -1,0 +1,65 @@
+<!--
+ * @Date        : 2020-08-13 23:35:42
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-13 23:51:27
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_17_ajax_2.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+    <script src="./assets/node_modules/vue-resource/dist/vue-resource.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        百度一下：<input type="text" v-model="keyword" @keyup="sendJsonP(keyword)">
+        <ul>
+            <li v-for="r in result">{{r}}</li>
+        </ul>
+        <br>
+        <ul>
+            <li v-for="l in res_level">{{l}}</li>
+        </ul>
+    </div>
+
+    <script>
+        window.onload = function () {
+            new Vue({
+                el: '#app',
+                data: {
+                    keyword: '',
+                    result: '',
+                    res_level: ''
+                },
+                methods: {
+                    sendJsonP(keyword) {
+                        let url = 'https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web';
+                        this.$http.jsonp(url, {
+                            params: {
+                                wd: keyword
+                            },
+                            jsonp: 'cb'//jsonp默认是callback,百度缩写成了cb，所以需要指定下                     }
+                        }).then(res => {
+                            if (res.data.g) {
+                                this.result = res.data.g.map(x => x['q']);
+                                this.res_level = res.data.g.map(x => x['sa']);
+                            } else {
+                                this.result = [];
+                                this.res_level = [];
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
