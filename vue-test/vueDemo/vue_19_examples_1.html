@@ -1,0 +1,64 @@
+<!--
+ * @Date        : 2020-08-14 11:09:57
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-08-14 11:56:24
+ * @FilePath    : \web-test\vue-test\vueDemo\vue_19_examples_1.html
+ * @Describe    : error
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./assets/css/vue_19_1.css">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+    <!-- <script src="./assets/js/vue_19_1.js"></script> -->
+</head>
+
+<body>
+    <form id="main" v-cloak>
+
+        <div class="bar">
+
+            <!-- 两个按钮用于切换不同的列表布局 -->
+
+            <a class="list-icon" v-bind:class="{ 'active': layout == 'list'}" v-on:click="layout = 'list'"></a>
+            <a class="grid-icon" v-bind:class="{ 'active': layout == 'grid'}" v-on:click="layout = 'grid'"></a>
+        </div>
+
+        <!-- 我们设置了两套布局页面。使用哪套依赖于 "layout" 绑定 -->
+
+        <ul v-if="layout == 'grid'" class="grid">
+            <!-- 使用大图，没有文本 -->
+            <li v-for="a in articles">
+                <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.image.large" /></a>
+            </li>
+        </ul>
+
+        <ul v-if="layout == 'list'" class="list">
+            <!-- 使用小图及标题 -->
+            <li v-for="a in articles">
+                <a v-bind:href="a.url" target="_blank"><img v-bind:src="a.image.small" /></a>
+                <p>{{a.title}}</p>
+            </li>
+        </ul>
+    </form>
+    <script>
+        // 部分导入
+        // import { demo_1 } from './assets/js/vue_19_1.js';
+        // demo_1()
+
+        // 部分导出——全部导入
+        import * as demo from './assets/js/vue_19_1.js';
+        demo.demo_1();
+
+        // 全部导入
+        // import demo from './assets/js/vue_19_1.js';
+        // demo.demo_1();
+    </script>
+</body>
+
+</html>
