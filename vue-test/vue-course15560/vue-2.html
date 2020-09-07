@@ -1,0 +1,50 @@
+<!--
+ * @Date        : 2020-09-07 22:32:57
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-09-07 22:55:14
+ * @FilePath    : \web-test\vue-test\vue-course15560\vue-2.html
+ * @Describe    : 
+-->
+<!-- 
+    vue component
+    组件开发
+ -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Vue 自定义组件</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1. 自定义组件data应该返回一个函数
+        2. 可以在vue对象中使用自定义组件
+        3. 全局组件可以使用多次
+    -->
+    <div id="app">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+    </div>
+
+    <script type="text/javascript">
+        //自定义组件也是一个Vue对象,因此之前的data,methods,钩子函数都是可用的
+        Vue.component('button-counter', {
+            data: function () {
+                return {
+                    count: 0
+                }
+            },
+            template: '<button>{{count}}</button>'
+        })
+        // 最后解析,放到最后不然报错
+        new Vue({ el: '#app' })
+    </script>
+</body>
+
+</html>

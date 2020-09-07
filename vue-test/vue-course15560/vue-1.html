@@ -1,0 +1,50 @@
+<!--
+ * @Date        : 2020-09-07 21:55:10
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-09-07 22:27:22
+ * @FilePath    : \web-test\vue-test\vue-course15560\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p>{{message}}</p>
+        <button @click="change">更新</button>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data: {
+                message: 'hello anlzou!'
+            },
+            methods: {
+                change: function () {
+                    this.message = "hello world!"
+                }
+            },
+
+            //钩子函数，不用写在methods中
+            created: function () {
+                console.info("重写内置函数--Vue对象创建的时候被调用！");
+            },
+            mounted: function () {
+                console.info("重写内置函数--Vue对象挂载到dom元素时执行！");
+            },
+            updated: function () {
+                console.info("重写内置函数--data数据被更新的时候执行！");
+            }
+        })
+    </script>
+</body>
+
+</html>
