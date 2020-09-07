@@ -1,0 +1,87 @@
+<!--
+ * @Date        : 2020-09-07 22:32:57
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-09-07 23:39:03
+ * @FilePath    : \web-test\vue-test\vue-course15560\vue-3-局部组件.html
+ * @Describe    : 
+-->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Vue 自定义局部组件</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+
+    <!-- 模块化 -->
+    <script type="text/template" id="temp">
+        <div>
+            <p>{{message}}</p>
+            <ul>
+                <li>one</li>
+                <li>two</li>
+                <li>three</li>
+            </ul>
+        </div>
+    </script>
+</head>
+
+<body>
+    <!-- 
+        1. 自定义组件data应该返回一个函数
+        2. 可以在vue对象中使用自定义组件
+        3. 全局组件可以使用多次
+        4. 由于自定义的组件可以使用多次,data返回的则说明函数内部变量是局部变量(组件之间不会相互影响)
+    -->
+    <div id="app1">
+        <my-header></my-header>
+    </div>
+
+    <div id="app2">
+        <my-header></my-header>
+    </div>
+
+    <div id="app3">
+        <h3>{{text}}</h3>
+        <my-header></my-header>
+    </div>
+
+    <script type="text/javascript">
+        Vue.component('my-header', {
+            template: '<h2>this is h2 tap.</h2>'
+        });
+
+        new Vue({
+            el: '#app1'
+        });
+
+        new Vue({
+            el: '#app2'
+        });
+
+        //局部定义组件就是vue对象内部定义的组件,仅仅自身可以使用
+        var vue = new Vue({
+            el: '#app3',
+            data: {
+                text: "app3-模块化组件开发"
+            },
+            components: {
+                'my-header': {
+                    // old
+                    // template: '<div>局部定义的组件</div>'
+                    //new
+                    template: '#temp',
+                    //data是组件中的数据
+                    data() {
+                        return { message: '未来的趋势是模块化,在每个组件中定义样式&js' }
+                    },
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
