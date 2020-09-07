@@ -2,7 +2,7 @@
  * @Date        : 2020-09-07 22:32:57
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-09-07 23:05:55
+ * @LastEditTime: 2020-09-07 23:13:36
  * @FilePath    : \web-test\vue-test\vue-course15560\vue-2.html
  * @Describe    : 
 -->
@@ -41,12 +41,19 @@
     </div>
 
     <script type="text/javascript">
+        //局部变量,只有一份
+        var mydata = { count: 0 };
+
         //自定义组件也是一个Vue对象,因此之前的data,methods,钩子函数都是可用的
         Vue.component('button-counter', {
             data: function () {
-                return {
-                    count: 0
-                }
+                //使用局部变量,多个按钮的count值共享
+                return mydata;
+
+                //全局变量,多个按钮的count值不一样
+                // return {
+                //     count: 0
+                // }
             },
             template: '<button class="bt" v-on:click="count++"><b>{{count}}</b></button>'
         })
