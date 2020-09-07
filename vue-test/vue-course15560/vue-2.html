@@ -2,7 +2,7 @@
  * @Date        : 2020-09-07 22:32:57
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-09-07 22:55:14
+ * @LastEditTime: 2020-09-07 23:05:55
  * @FilePath    : \web-test\vue-test\vue-course15560\vue-2.html
  * @Describe    : 
 -->
@@ -19,6 +19,13 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" href="">
     <script src="./assets/node_modules/vue/dist/vue.js"></script>
+    <style>
+        .bt {
+            width: 60px;
+            height: 30px;
+            font-size: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -26,6 +33,7 @@
         1. 自定义组件data应该返回一个函数
         2. 可以在vue对象中使用自定义组件
         3. 全局组件可以使用多次
+        4. 由于自定义的组件可以使用多次,data返回的则说明函数内部变量是局部变量(组件之间不会相互影响)
     -->
     <div id="app">
         <button-counter></button-counter>
@@ -40,10 +48,15 @@
                     count: 0
                 }
             },
-            template: '<button>{{count}}</button>'
+            template: '<button class="bt" v-on:click="count++"><b>{{count}}</b></button>'
         })
         // 最后解析,放到最后不然报错
-        new Vue({ el: '#app' })
+        new Vue({
+            el: '#app',
+            data: {
+
+            }
+        })
     </script>
 </body>
 
