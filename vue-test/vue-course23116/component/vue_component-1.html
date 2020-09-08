@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>组件-1</title>
+		<script src="../assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 组件基础
+			1. 因为组件是可复用的 Vue 实例，所以它们与 new Vue 接收相同的选项，
+			例如 data、computed、watch、methods 以及生命周期钩子等。
+			仅有的例外是像 el 这样根实例特有的选项。
+		-->
+		<div id="app-1">
+			<button-counter></button-counter>
+			<button-counter></button-counter><br>
+			<button type="button" @click="count++">同步{{count}}</button>
+			<button type="button" @click="count++">同步{{count}}</button>
+		</div>
+
+		<script type="text/javascript">
+			Vue.component('button-counter', {
+				data: function() {
+					return {
+						count: 0
+					}
+				},
+				template: '<button v-on:click="count++">You clicked me {{count}} times.</button>'
+			});
+
+			new Vue({
+				el: "#app-1",
+				data: {
+				  count: 0
+				}
+			});
+		</script>
+		
+		<div id="">
+			
+		</div>
+	</body>
+</html>
