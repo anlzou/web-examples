@@ -26,9 +26,6 @@
         1. axios是一个支持ajax的vue模块
         2. 支持配置跨域访问
      -->
-    <!-- <div id="app1">
-        {{result}}
-    </div> -->
 
     <table id="app1">
         <tr v-for="item in result">
@@ -46,7 +43,7 @@
             },
             created: function () {
                 //通过axios访问本地/远程数据
-                axios.get("data.json").then(function (result) {
+                axios.get("data/data.json").then(function (result) {
                     console.info(eval(result));
                     this.result = result.data;
                 }.bind(this));
