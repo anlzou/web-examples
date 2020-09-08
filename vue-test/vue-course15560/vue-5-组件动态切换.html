@@ -1,0 +1,57 @@
+<!--
+ * @Date        : 2020-09-07 22:32:57
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-09-08 10:39:03
+ * @FilePath    : \web-test\vue-test\vue-course15560\vue-5-组件动态切换.html
+ * @Describe    : 
+-->
+<!-- 
+    嵌套组件关键字: <slot>
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>组件动态操作</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1. component标签来完成组件动态绑定
+        2. 按钮的@click来修改data属性从面切换组件
+        3. 通过keep-alive 标签来保留组件的状态值
+     -->
+    <div id="app1">
+        <button @click="changeComp(1)">第一项</button>
+        <button @click="changeComp(2)">第二项</button>
+        <button @click="changeComp(3)">第三项</button>
+        <keep-alive>
+            <component v-bind:is="nowHeader"></component>
+        </keep-alive>
+    </div>
+
+    <script>
+        var vn1 = new Vue({
+            el: '#app1',
+            data: {
+                nowHeader: 'header-1'
+            },
+            components: {
+                'header-1': { template: '<div>组件1: <input /></div>' },
+                'header-2': { template: '<div>组件2: <input /></div>' },
+                'header-3': { template: '<div>组件3: <input /></div>' },
+            },
+            methods: {
+                changeComp: function (index) {
+                    this.nowHeader = 'header-' + index;
+                }
+            },
+        });
+    </script>
+</body>
+
+</html>
