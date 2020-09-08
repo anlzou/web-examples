@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="./assets/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<div id="app1">
+			<label>单价 </label><input type="text" v-model="price"/><button @click="add_price">+1</button><button @click="subtraction_price">-1</button><br>
+			<label>数量 </label><input type="text" v-model="num"/><button @click="add_num">+1</button><button @click="subtraction_num">-1</button><br>
+			总价：{{total}}<br>
+			<button @click="reset">reset</button>
+		</div>
+		
+		<script type="text/javascript">
+			var nv1 = new Vue({
+				el:"#app1",
+				data:{
+					price:0,
+					num:0
+				},
+				computed:{
+					total:function() {
+						if(this.num*this.price>199){
+							return this.num*this.price-100;
+						}else{
+							return this.num*this.price;
+						}
+					}
+				},
+				methods:{
+					add_price:function(){
+						return this.price++;
+					},
+					add_num:function(){
+						return this.num++;
+					},
+					subtraction_price:function(){
+						return this.price--;
+					},
+					subtraction_num:function(){
+						return this.num--;
+					},
+					reset:function(){
+						this.price = 0;
+						this.num = 0;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
