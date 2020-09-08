@@ -1,0 +1,72 @@
+<!--
+ * @Date        : 2020-09-07 22:32:57
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-09-08 10:25:27
+ * @FilePath    : \web-test\vue-test\vue-course15560\vue-4-组件之间嵌套使用.html
+ * @Describe    : 
+-->
+<!-- 
+    嵌套组件关键字: <slot>
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Vue 自定义局部组件</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+    <style>
+        .bt-app2 {
+            background-color: beige;
+            font-size: 20px;
+            width: 60px;
+            height: 40px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app1">
+        <my-header>
+            <my-title></my-title>
+        </my-header>
+    </div>
+
+    <div id="app2">
+        <my-header>
+            <button slot="left" class="bt-app2">⬅</button>
+            <button slot="right" class="bt-app2">➡</button>
+        </my-header>
+    </div>
+
+    <script>
+        var nv1 = new Vue({
+            el: "#app1",
+            //组件局部注册
+            components: {
+                'my-header': {
+                    //系统给定的slpt来实现标签的嵌套操作
+                    template: '<div>外层便签<slot /></div>'
+                },
+                'my-title': {
+                    template: '<h3>内层标签</h3>'
+                }
+            }
+        });
+
+        var vn2 = new Vue({
+            el: '#app2',
+            components: {
+                'my-header': {
+                    //系统给定的slpt来实现标签的嵌套操作
+                    template: '<div><slot name="left"/>我是头部内容<slot name="right"></div>'
+                }
+            }
+        });
+    </script>
+
+</body>
+
+</html>
