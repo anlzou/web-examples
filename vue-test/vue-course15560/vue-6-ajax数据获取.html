@@ -2,9 +2,9 @@
  * @Date        : 2020-09-07 22:32:57
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-09-08 12:57:47
+ * @LastEditTime: 2020-09-08 15:33:13
  * @FilePath    : \web-test\vue-test\vue-course15560\vue-6-ajax数据获取.html
- * @Describe    : 
+ * @Describe    : jqurey is error
 -->
 <!-- 
     嵌套组件关键字: <slot>
@@ -30,9 +30,13 @@
         {{result}}
     </div> -->
 
-    <div id="app2">
-        {{result}}
-    </div>
+    <table id="app2">
+        <tr v-for="item in result">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.age}}</td>
+        </tr>
+    </table>
 
     <script>
         // var nv1 = new Vue({
@@ -52,16 +56,15 @@
         var nv2 = new Vue({
             el: '#app2',
             data: {
-                result: ""
+                result: []
             },
             created: function () {
                 //通过juqrey ajax访问本地/远程数据
                 $.ajax({
-                    url: 'data/data.json',
+                    url: 'data.json',
                     type: 'get',
                     dataType: 'json'
                 }).done(function (dat) {
-                    console.info(dat.data);
                     this.result = dat.data;
                 }).fail(function () {
                     alert('浏览器禁止跨域请求');
