@@ -1,0 +1,74 @@
+<!--
+ * @Date        : 2020-09-07 22:32:57
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-09-08 12:57:47
+ * @FilePath    : \web-test\vue-test\vue-course15560\vue-6-ajax数据获取.html
+ * @Describe    : 
+-->
+<!-- 
+    嵌套组件关键字: <slot>
+ -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>vue-6-ajax数据获取</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./assets/jquery-3.5.1.js"></script>
+    <script src="./assets/node_modules/vue/dist/vue.js"></script>
+    <script src="./assets/node_modules/axios/dist/axios.js"></script>
+</head>
+
+<body>
+    <!-- 
+        1. axios是一个支持ajax的vue模块
+        2. 支持配置跨域访问
+     -->
+    <!-- <div id="app1">
+        {{result}}
+    </div> -->
+
+    <div id="app2">
+        {{result}}
+    </div>
+
+    <script>
+        // var nv1 = new Vue({
+        //     el: '#app1',
+        //     data: {
+        //         result: ""
+        //     },
+        //     created: function () {
+        //         //通过axios访问本地/远程数据
+        //         axios.get("/data/data.json").then(function (result) {
+        //             console.info(result);
+        //             this.result = result.data;
+        //         }.bind(this));
+        //     },
+        // });
+
+        var nv2 = new Vue({
+            el: '#app2',
+            data: {
+                result: ""
+            },
+            created: function () {
+                //通过juqrey ajax访问本地/远程数据
+                $.ajax({
+                    url: 'data/data.json',
+                    type: 'get',
+                    dataType: 'json'
+                }).done(function (dat) {
+                    console.info(dat.data);
+                    this.result = dat.data;
+                }).fail(function () {
+                    alert('浏览器禁止跨域请求');
+                })
+            }
+        });
+    </script>
+</body>
+
+</html>
