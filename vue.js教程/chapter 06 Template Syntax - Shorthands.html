@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!-- 
+			1. click.sotp 点击此便签后不执行其它click
+		-->
+		<div id="app">
+			<p v-if="seen">现在你看到我了</p>
+			<a v-bind:href="url">...</a>
+			<div @click="click1">
+				<div @click.stop="click2">
+					click me
+				</div>
+			</div>
+			<div @click="click1">
+				<div @click="click2">
+					click me2
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el: "#app",
+				data: {
+					seen: true,
+					url: "https://www.baidu.com"
+				},
+				methods: {
+					click1: function() {
+						console.log('click1......');
+					},
+					click2: function() {
+						console.log('click2......');
+					}
+				}
+			});
+		</script>
+		<style type="text/css">
+
+		</style>
+	</body>
+</html>
