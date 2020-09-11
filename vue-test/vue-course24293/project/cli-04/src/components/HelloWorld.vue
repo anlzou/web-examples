@@ -1,6 +1,11 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <i class="el-icon-edit"></i>
+    <i class="el-icon-share"></i>
+    <i class="el-icon-delete"></i>
+    <i class="el-icon-loading" ></i>
+    <el-button type="primary" icon="el-icon-search">搜索</el-button>
   </div>
 </template>
 
@@ -8,7 +13,7 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String,
+    msg: String
   }
 }
 </script>
