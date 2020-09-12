@@ -28,6 +28,16 @@ const routes = [
     name: 'User',
     component: () => import('../views/user/User')
   },
+  {
+    path: '*',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/user-*',
+    name: 'ElementUI',
+    component: () => import('../views/ElementUI')
+  },
 ]
 
 const router = new VueRouter({
