@@ -8,6 +8,12 @@
       <br><br>
       <router-link to="/user/5">user/5</router-link> |
       <router-link to="/user/6">user/6</router-link>
+
+      <br><br>
+      <div>
+        <router-link to="profile">UserProfile</router-link> |
+        <router-link to="posts">UserPosts</router-link>
+      </div>
     </div>
     <router-view/>
   </div>

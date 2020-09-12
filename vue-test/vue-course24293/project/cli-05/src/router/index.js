@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import User from "../views/user/User";
+import ElementUI from "../views/ElementUI";
 
 Vue.use(VueRouter)
 
@@ -21,12 +23,22 @@ const routes = [
   {
     path: '/element',
     name: 'ElementUI',
-    component: () => import(/* webpackChunkName: "about" */ '../views/ElementUI.vue')
+    component: ElementUI
   },
   {
     path: '/user/:id',
     name: 'User',
-    component: () => import('../views/user/User')
+    component: User,
+    children : [
+      {
+        path : 'profile',
+        component : () => import('../views/user/UserProfile')
+      },
+      {
+        path : 'posts',
+        component : () => import('../views/user/UserPosts')
+      }
+    ]
   },
   {
     path: '*',
@@ -35,8 +47,8 @@ const routes = [
   },
   {
     path: '/user-*',
-    name: 'ElementUI',
-    component: () => import('../views/ElementUI')
+    name: 'ElementUI_',
+    component: ElementUI
   },
 ]
 

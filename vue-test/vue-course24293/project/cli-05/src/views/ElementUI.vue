@@ -12,7 +12,7 @@ import Input1 from "../components/ElementUI/input/Input-clearable";
 import Input2 from "../components/ElementUI/input/Input-show-password";
 import Input3 from "../components/ElementUI/input/Input-autosize";
 export default {
-name: "ElementUI",
+name: 'ElementUI',
   components:{
     Input1,
     Input2,
