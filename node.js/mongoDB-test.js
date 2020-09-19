@@ -2,10 +2,12 @@
  * @Date        : 2020-09-19 09:15:24
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-09-19 11:00:06
+ * @LastEditTime: 2020-09-19 14:58:39
  * @FilePath    : \node.js\mongoDB-test.js
  * @Describe    : 
  */
+// from `nodejs-mongodb`：https://www.runoob.com/nodejs/nodejs-mongodb.html
+
 /**创建数据库
  * 1.创建一个 MongoClient 对象
  * 2.配置指定的 URL 和 端口号
@@ -34,15 +36,15 @@ function funConnectDataBase() {
  * collection1: 数据库名称
  * site: 集合名称
  */
-function funCreateCollection(name) {
+function funCreateCollection(collection_name) {
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         console.log('数据库连接成功');
 
         var dbase = db.db('collection1');
-        dbase.createCollection(name, function (err, res) {
+        dbase.createCollection(collection_name, function (err, res) {
             if (err) throw err;
-            console.log('集合创建成功');
+            console.log('集合 “' + collection_name + '” 创建成功');
             db.close();
         });
     });
@@ -57,14 +59,13 @@ function funCreateCollection(name) {
 /**插入数据
  * 插入一条数据条数据，使用 insertOne()
 */
-function funInsertOne(myobj) {
+function funInsertOne(myobj, collection_name) {
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         console.log('数据库连接成功');
-
         var dbo = db.db('collection1');
 
-        dbo.collection('site').insertOne(myobj, function (err, res) {
+        dbo.collection(collection_name).insertOne(myobj, function (err, res) {
             if (err) throw err;
             console.log('单条信息插入成功');
             db.close();
@@ -72,20 +73,20 @@ function funInsertOne(myobj) {
     });
 }
 // var myobj = { name: 'anlzou1', blog: 'www.anlzou1.com', age: 20 };
-// funInsertOne(myobj);
+// funInsertOne(myobj,'site');
 
 
 /**插入数据
  * 插入多条数据可以使用 insertMany()
  * insertedCount: 插入的条数
 */
-function funInsertMany(myobj2) {
+function funInsertMany(myobj2, collection_name) {
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (err) throw err;
         console.log('数据库连接成功');
         // test code
         var dbo = db.db('collection1');
-        dbo.collection('site').insertMany(myobj2, function (err, res) {
+        dbo.collection(collection_name).insertMany(myobj2, function (err, res) {
             if (err) throw err;
             console.log('多条信息插入成功' + '数量为：' + res.insertedCount);
             db.close();
@@ -93,10 +94,15 @@ function funInsertMany(myobj2) {
     });
 }
 // var myobj2 = [
-//     { name: 'baidu1', url: 'https://baidu1.com', type: 'cn' },
-//     { name: 'Google1', url: 'https://www.google1.com', type: 'en' }
+//     { name: 'baidu', url: 'https://baidu1.com', type: 'cn' },
+//     { name: 'google', url: 'https://www.google.com', type: 'en' },
+//     { name: 'tencent', url: 'https://www.tencent.com', type: 'cn' },
+//     { name: 'alibaba', url: 'https://www.alibaba.com', type: 'cn' },
+//     { name: 'facebook', url: 'https://www.facebook.com', type: 'en' },
+//     { name: 'xiaomi', url: 'https://www.xiaomi.com', type: 'cn' },
+//     { name: 'vivo', url: 'https://www.vivo.com', type: 'cn' }
 // ];
-// funInsertMany(myobj2);
+// funInsertMany(myobj2, 'site');
 
 
 
@@ -198,6 +204,115 @@ function funDeleteData(isAll, deleteKey) {
 
     });
 }
-// var deleteKey = { name: 'baidu' };
+// var deleteKey = { name: 'Google' };
 // funDeleteData(1, deleteKey);
 // funFindData(deleteKey);
+
+
+
+/**排序
+ * 使用 sort() 方法，该方法接受一个参数，规定是升序(1)还是降序(-1)。
+ * 例如：
+ *     { type: 1 }  // 按 type 字段升序
+ *     { type: -1 } // 按 type 字段降序
+ */
+
+function funSort(mySort) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db('collection1');
+
+        dbo.collection('site').find().sort(mySort).toArray((err, result) => {
+            if (err) throw err;
+            console.log(result);
+            db.close();
+        });
+    });
+}
+
+// var mySort = { type: -1 };
+// funSort(mySort);
+
+
+
+/**查询分页
+ * 设置指定的返回条数可以使用 limit() 方法，该方法只接受一个参数，指定了返回的条数。
+ * 指定跳过的条数，可以使用 skip() 方法。
+ */
+function funLimit(piks, timil) {
+    piks = piks || 0;
+    timil = timil || 99;
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("collection1");
+
+        dbo.collection('site').find().skip(piks).limit(timil).toArray((err, result) => {
+            if (err) throw err;
+            console.log('跳过 ' + piks + ' 条数据，查询 ' + result.length + ' 条数据');
+            console.log(result);
+            db.close();
+        });
+    });
+}
+// funLimit(1);
+
+/**连接操作
+ * mongoDB 不是一个关系型数据库，但我们可以使用 $lookup 来实现左连接。
+ * 1.创建集合
+ * 2.插入数据
+ * 3.实现连接操作
+ */
+// funCreateCollection('orders');
+// var objData_orders = { _id: 1, product_id: 154, status: 1 };
+// funInsertOne(objData_orders, 'orders');
+
+// funCreateCollection('products');
+// var objData_products = [
+//     { _id: 154, name: '笔记本电脑' },
+//     { _id: 155, name: '耳机' },
+//     { _id: 156, name: '台式电脑' }
+// ];
+// funInsertMany(objData_products, 'products');
+
+function funJoinLeft_lookup(collection_name, arrTodo) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("collection1");
+
+        dbo.collection(collection_name).aggregate(arrTodo).toArray((err, res) => {
+            if (err) throw err;
+            console.log(JSON.stringify(res));
+            db.close();
+        })
+    });
+}
+var arrJoinLeft = [{
+    $lookup: {
+        from: 'products',            // 右集合
+        localField: 'product_id',    // 左集合 join 字段
+        foreignField: '_id',         // 右集合 join 字段
+        as: 'orderdetails'           // 新生成字段（类型array）
+    }
+}];
+// funJoinLeft_lookup('orders', arrJoinLeft);
+
+
+
+/**删除集合
+ * 我们可以使用 drop() 方法来删除集合
+*/
+// funCreateCollection('test');
+
+funDelCollection = (collection_name) => {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("collection1");
+
+        dbo.collection(collection_name).drop((err, delOK) => {
+            if (err) throw err;
+            if (delOK) console.log('集合 “' + collection_name + '” 删除成功');
+            db.close();
+        })
+    });
+}
+// funDelCollection('test');
