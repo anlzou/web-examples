@@ -2,7 +2,7 @@
  * @Date        : 2020-09-19 16:30:15
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-09-19 17:02:50
+ * @LastEditTime: 2020-09-19 18:47:51
  * @FilePath    : \web-test\js\async&await\test1.js
  * @Describe    :
  */
@@ -61,9 +61,17 @@ awaitTest1 = (num) => {
         })
     }
 
-    async function testResult(num) {
-        let result = await doubleAfter2seconds(num);
-        console.log(result);
+    // async function testResult(num) {     //1秒
+    //     let result = await doubleAfter2seconds(num);
+    //     // let result = doubleAfter2seconds(num);   //Promise { <pending> }
+    //     console.log(result);
+    // }
+
+    async function testResult(num) {    //3秒
+        let first = await doubleAfter2seconds(30);
+        let second = await doubleAfter2seconds(50);
+        let third = await doubleAfter2seconds(30);
+        console.log(first + second + third);
     }
 
     testResult(num);
