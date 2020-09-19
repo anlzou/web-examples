@@ -2,7 +2,7 @@
  * @Date        : 2020-09-19 15:00:11
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-09-19 15:39:40
+ * @LastEditTime: 2020-09-19 19:55:59
  * @FilePath    : \node.js\mongoDB-usePromise.js
  * @Describe    : 异步编程、Promise类
  */
@@ -60,7 +60,7 @@ funOperation_usePromise = (collection_name) => {
         }).then((res) => {
             // 查询
             return test.find().toArray().then((arr) => {
-                console.log('----update data----')
+                console.log('----update data----');
                 console.log(arr);
             });
         }).then(() => {
@@ -90,3 +90,41 @@ funOperation_usePromise = (collection_name) => {
  * 1.async
  * 2.await
 */
+async function funOperation_async() {
+    var conn = null;
+    try {
+        conn = await MongoClient.connect(url);
+        console.log('数据库已经连接');
+        const test = conn.db('collection1').collection('site2');
+
+        //增加
+        var insert_data = { "site": "google.com", "name": "google" };
+        await test.insertOne(insert_data);
+        //查询
+        var arr = await test.find().toArray();
+        console.log('----insert data----');
+        console.log(arr);
+
+        //更改
+        var update_key = { "name": 'google' };
+        var update_date = { $set: { "site": "www.google.com" } };
+        await test.updateMany(update_key, update_date);
+        // 查询
+        arr = await test.find().toArray();
+        console.log('----update data----');
+        console.log(arr);
+
+        //删除
+        var delete_key = { "name": "baidu" }
+        await test.deleteMany(delete_key);
+        //查询
+        var arr = await test.find().toArray();
+        console.log('----delete data----');
+        console.log(arr);
+    } catch (err) {
+        console.log("错误：" + err.message);
+    } finally {
+        if (conn != null) conn.close();
+    }
+}
+funOperation_async();
