@@ -2,7 +2,7 @@
  * @Date        : 2020-09-19 09:15:24
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-09-19 10:25:11
+ * @LastEditTime: 2020-09-19 11:00:06
  * @FilePath    : \node.js\mongoDB-test.js
  * @Describe    : 
  */
@@ -71,7 +71,7 @@ function funInsertOne(myobj) {
         });
     });
 }
-var myobj = { name: 'anlzou1', blog: 'www.anlzou1.com', age: 20 };
+// var myobj = { name: 'anlzou1', blog: 'www.anlzou1.com', age: 20 };
 // funInsertOne(myobj);
 
 
@@ -92,10 +92,10 @@ function funInsertMany(myobj2) {
         });
     });
 }
-var myobj2 = [
-    { name: 'baidu1', url: 'https://baidu1.com', type: 'cn' },
-    { name: 'Google1', url: 'https://www.google1.com', type: 'en' }
-];
+// var myobj2 = [
+//     { name: 'baidu1', url: 'https://baidu1.com', type: 'cn' },
+//     { name: 'Google1', url: 'https://www.google1.com', type: 'en' }
+// ];
 // funInsertMany(myobj2);
 
 
@@ -137,7 +137,67 @@ function funFindData(findKey) {
 
 
 
-/**更新一条数据
- * 对数据库的数据进行修改
+/**更新数据
+ * 更新一条数据使用 updateOne()
+ * 更新所有符合条的文档数据可以使用 updateMany()
+ * result.nModified: 更新的条数
 */
-// MongoClient.connect(url,)
+function funUpdateData(isAll, updateKey, updateStr) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db('collection1');
+
+        if (isAll === 1) {
+            //更新多条数据
+            dbo.collection('site').updateMany(updateKey, updateStr, function (err, res) {
+                if (err) throw err;
+                console.log("文档更新成功，" + "更新了" + res.result.nModified + "条数据");
+                db.close();
+            });
+        } else {
+            //更新一条数据
+            dbo.collection('site').updateOne(updateKey, updateStr, function (err, res) {
+                if (err) throw err;
+                console.log("文档更新成功");
+                db.close();
+            });
+        }
+    });
+}
+// var updateKey = { name: 'anlzou' };
+// var updateStr = { $set: { 'age': 19 } };
+// 1为更新所有包含key的数据，非1为更新第一条数据
+// funUpdateData(1, updateKey, updateStr);
+//查询数据
+// funFindData(updateKey);
+
+
+
+/**删除数据
+ * deleteOne: 删除一条
+ * deleteMany: 删除多条
+*/
+function funDeleteData(isAll, deleteKey) {
+    MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
+        if (err) throw err;
+        var dbo = db.db("collection1");
+
+        if (isAll === 1) {
+            dbo.collection('site').deleteMany(deleteKey, function (err, obj) {
+                if (err) throw err;
+                console.log("文档删除成功，删除了" + obj.result.n + '条数据');
+                db.close();
+            });
+        } else {
+            dbo.collection('site').deleteOne(deleteKey, function (err, obj) {
+                if (err) throw err;
+                console.log("文档删除成功");
+                db.close();
+            })
+        }
+
+    });
+}
+// var deleteKey = { name: 'baidu' };
+// funDeleteData(1, deleteKey);
+// funFindData(deleteKey);
