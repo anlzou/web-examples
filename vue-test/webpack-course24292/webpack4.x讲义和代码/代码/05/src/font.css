@@ -1,4 +1,16 @@
+/*** 
+ * @Date        : 2020-07-10 20:13:34
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-01 22:14:02
+ * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\代码\05\src\font.css
+ * @Describe    : 
+ */
 h1 {
     color: chocolate;
     font-size: 200px;
+}
+h2{
+    font-weight: 100px;
+    color: blue;
 }
