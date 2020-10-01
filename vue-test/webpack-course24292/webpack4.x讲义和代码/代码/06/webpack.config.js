@@ -1,4 +1,12 @@
 /*
+ * @Date        : 2020-07-10 20:13:34
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-01 23:20:38
+ * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\代码\06\webpack.config.js
+ * @Describe    : 
+ */
+/*
     webpack配置文件，每次执行会自动读取这里的配置
  */
 
@@ -34,16 +42,16 @@ module.exports = {
             },
             // {
             //     test: /\.(png|jpg|gif)$/,
-            //     //use : ['file-loader']
+            //     // use : ['file-loader']
             //     loader: 'file-loader',
             //     options: {
             //         name : './img/[name].[ext]'
             //     }
-            // }
+            // },
             {
                 test: /\.(png|jpg|gif)$/,
                 //use : ['file-loader']
-                //loader: 'file-loader',
+                loader: 'file-loader',
                 loader: 'url-loader',
                 options: {
                     limit : 10240,
