@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-02 19:56:20
+ * @LastEditTime: 2020-10-02 21:38:52
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -15,7 +15,7 @@
 - webpack-dev-server
 
 ### [04.Plugin部署Html 插件](../webpack4.x讲义和代码/讲义/04.Plugin部署Html插件.pdf)
-- [html-webpack-plugin 详解](https://www.cnblogs.com/wonyun/p/6030090.html)
+- [html-webpack-plugin 详解](https://www.cnblogs.com/wonyun/p/6030090.html) [webpack4 之html-webpack-plugin](https://www.jianshu.com/p/08a60756ffda)
   - 为html文件中引入的外部资源如`script`、`link`动态添加每次compile后的hash，防止引用缓存的外部文件问题
   - 可以生成创建html入口文件，比如单页面可以生成一个html文件入口，配置N个html-webpack-plugin可以生成N个页面入口
 
@@ -142,4 +142,18 @@ plugins: [
 moudles
 ```
 npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin
+```
+
+### [13.打包Ts和Scss](../webpack4.x讲义和代码/讲义/13.打包Ts和Scss.pdf)
+- sass sass-loader node-sass
+- typescript ts-loader
+
+#### 重构
+> problem
+
+- [ ] ts.png图片无法显示
+
+#### moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader
 ```

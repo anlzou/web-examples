@@ -13,12 +13,12 @@ const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plug
 
 module.exports = {
     //出口文件
-    entry: './src/js/index.js',
+    entry: './src/index.js',
 
     //出口文件
     output: {
         //文件名
-        filename: "js/bundle.js",
+        filename: "assets/js/bundle.js",
         //路径，绝对路径
         path : path.resolve(__dirname, './dist')
     },
@@ -72,7 +72,7 @@ module.exports = {
                 options: {
                     limit : 10240,
                     name : '[name].[ext]',
-                    outputPath : 'img'
+                    outputPath : 'assets/img'
                 }
             },
             {
@@ -123,10 +123,10 @@ module.exports = {
             }
         }),
         new MiniCssExtractPlugin({
-            filename : 'css/[name].css'
+            filename : 'assets/css/[name].css'
         }),
         //压缩css
-        //new OptimizeCssAssetsWebpackPlugin()
+        new OptimizeCssAssetsWebpackPlugin()
     ],
 
     //devTool
