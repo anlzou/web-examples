@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-02 17:29:37
+ * @LastEditTime: 2020-10-02 19:56:20
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -107,4 +107,39 @@ entry: () => ({
 moudles
 ```
 npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties
+```
+
+### [12.压缩Html和Css代码](../webpack4.x讲义和代码/讲义/12.压缩Html和Css代码.pdf)
+1. 为何要压缩代码？什么情况下要压缩？答：在生产环境下打包时节约资源；
+2. 既然在生产环境，那首先要把打包的配置更改为生产环境；
+```js
+//生成模式
+mode : "production",
+```
+PS：调节为生产环境打包，就会自动将 js 代码进行打包，不需要单独设置；
+
+3. 对于 Html 文件打包，通过 HtmlWebpackPlugin 插件，生成环境会自动压缩；
+4. 如果在开发环境中压缩，可以通过配置来设置要压缩的选项：
+```js
+minify: {
+  collapseWhitespace: true, //是否去除空格，默认 false
+  removeComments: true, //是否移除注释 默认 false
+},
+``` 
+5. 对于 CSS 文件，就算设置了生成环境，它也不会自动压缩，此时需要另外设置；
+```
+npm i optimize-css-assets-webpack-plugin -D
+```
+```js
+//获取 css 压缩插件
+const OptimizeCssAssetsWebpackPlugin = require('optimize-css-assets-webpack-plugin')
+//插件
+plugins: [
+  new OptimizeCssAssetsWebpackPlugin(), //压缩 css
+],
+```
+
+moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin
 ```

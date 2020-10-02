@@ -102,20 +102,21 @@ module.exports = {
             template: "./src/index.html",        //默认
             filename: "index.html",
             minify: {
-                collapseWhitespace : false,          //去掉空格
-                removeComments : false,              //去掉注释
+                collapseWhitespace : true,          //去掉空格,等同mode = production
+                removeComments : true,              //去掉注释,等同mode = production
             }
         }),
         new MiniCssExtractPlugin({
             filename : 'css/[name].css'
         }),
         //压缩css
-        //new OptimizeCssAssetsWebpackPlugin()
+        new OptimizeCssAssetsWebpackPlugin()
     ],
 
     //devTool
     devtool: 'inline-source-map',
 
     //生成模式
-    mode : "development"
+    mode : "development"//开发模式保留注释
+    // mode:"production"
 };
