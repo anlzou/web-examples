@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-02 17:18:47
+ * @LastEditTime: 2020-10-02 17:29:37
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -82,4 +82,29 @@ npm i eslint-loader -D
 #### moudles
 ```
 npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties eslint-loader
+```
+
+### [11.多页面配置打包](../webpack4.x讲义和代码/讲义/11.多页面配置打包.pdf)
+1. 如果我们想生成多个.html 文件，比如 index.html 和 main.html；
+2. 此时，我们需要修改一下入口文件和出口文件；
+```js
+//入口文件
+entry: {
+  //把需要加载的 js 以键值对方
+  index : './src/js/index.js',
+  main : './src/js/main.js'
+},
+
+//或
+
+//入口文件，也支持 ES6 的箭头函数
+entry: () => ({
+  index : './src/js/index.js',
+  main : './src/js/main.js'
+}),
+```
+
+moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties
 ```
