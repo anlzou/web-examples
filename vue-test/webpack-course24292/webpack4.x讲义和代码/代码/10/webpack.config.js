@@ -15,10 +15,10 @@ module.exports = {
 
     //出口文件
     output: {
-        //文件名
-        filename: "js/bundle.js",
         //路径，绝对路径
-        path : path.resolve(__dirname, './dist')
+        path : path.resolve(__dirname, './dist'),
+        //文件名
+        filename: "js/bundle.js"
     },
 
     //模块
