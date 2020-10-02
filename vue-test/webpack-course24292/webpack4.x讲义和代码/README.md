@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-02 09:20:57
+ * @LastEditTime: 2020-10-02 11:09:35
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -41,4 +41,16 @@
 ```js
 //请注意：如果使用 postcss-preset-env，就删除 autoprefixer
 //因为 post-preset-env 集成了 autoprefixer，不需要再引入设置
+```
+
+### [09.Babel转换ES6语法](../webpack4.x讲义和代码/讲义/09.Babel转换ES6语法.pdf)
+1. 我们有时需要将 ES6+的语法转换成 ES5，让兼容性更好一些；
+2. 这时需要有三个模块需要安装，具体如下：
+   - babel-loader：与 Webpack 协同工作的模块，加载处理 js 文件；
+   - @babel/core：Babel 编译器的核心模块，是 babel-loader 依赖；
+   - @babel/preset-env：Babel 预置器，用于分析 ES6 语法；
+
+moudles
+```
+npm i postcss-preset-env webpack webpack-dev-server  html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/core @babel/preset-env @babel/plugin-proposal-class-properties -D
 ```
