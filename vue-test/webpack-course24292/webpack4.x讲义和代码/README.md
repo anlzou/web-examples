@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-01 23:34:22
+ * @LastEditTime: 2020-10-01 23:48:11
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -27,3 +27,6 @@
 1. file-loader：解析 JavaScipt 和 css 插入的图片；
 2. url-loader：将图片转换为 base64 编码字符串；
 3. html-loader：将.html 进行打包，从而解析 img 插入问题；
+
+### [07.分离CSS.分类打包](../webpack4.x讲义和代码/讲义/07.分离CSS.分类打包.pdf)
+- mini-css-extract-plugin
