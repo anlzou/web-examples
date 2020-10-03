@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-03 08:48:47
+ * @LastEditTime: 2020-10-03 09:18:36
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -181,6 +181,37 @@ resolve: {
 },
 ```
 PS：导入语句是如果检测不到指定的会报错；
+
+### moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader
+```
+
+## [15.Source-Map配置](../webpack4.x讲义和代码/讲义/15.Source-Map配置.pdf)
+[浅谈webpack devtool里的7种SourceMap模式](https://www.jb51.net/article/154583.htm)
+1. Source-map 可以将编译、打包、压缩后的代码映射到源代码上；
+2. 比如你打包或运行的代码是编译后的，报错后，它能指向你源代码的位置上；
+```json
+//会生成一个.map 文件
+devtool: 'source-map', 
+```
+3. 根据不同的方式，有下面几种类型：
+```
+source-map          //打包后会生成一个对应的.map 文件
+inline-source-map   //打包后会在 js 文件的内部最后生成 map 内容
+eval-source-map     //打包后会在每个模块都执行 eval
+hidden-source-map   //打包后会生成.map 文件但不会追踪原始文件的错误代码
+cheap-source-map    //打包后会生成.map 并只能精确到行
+```
+PS：以上打包还可以合并比如 eval-cheap-source-map
+
+PS：当然还有一些不在赘述，有兴趣自行搜索，太多。。。
+
+4. 在开发环境和生产环境，我们该如何选择？开发要求速度快，调试方便推荐：
+```
+eval-source-map 或 eval-cheap-source-map  //开发环境
+source-map                                //生产环境
+```
 
 ### moudles
 ```

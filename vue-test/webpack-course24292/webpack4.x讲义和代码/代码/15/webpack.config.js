@@ -138,7 +138,7 @@ module.exports = {
     ],
 
     //devTool
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
 
     //生成模式
     mode : "development"
