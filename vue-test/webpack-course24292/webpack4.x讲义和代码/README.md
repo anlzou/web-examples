@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-03 10:03:32
+ * @LastEditTime: 2020-10-03 10:26:44
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -245,4 +245,17 @@ devServer: {
 ### moudles
 ```
 npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin
+```
+
+## [18.Axios跨域请求](../webpack4.x讲义和代码/讲义/18.Axios跨域请求.pdf)
+Axios 设置跨域请求的问题。
+
+安装 axios，用于 ajax 测试；
+```
+npm -D install axios
+```
+
+moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin axios
 ```

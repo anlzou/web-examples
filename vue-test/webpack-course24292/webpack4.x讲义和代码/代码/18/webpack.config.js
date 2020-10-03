@@ -137,9 +137,9 @@ module.exports = {
         //代理
         proxy : {
             '/api' : {
-                target : 'https://cdn.ycku.com',
-                changeOrigin : true,
-                pathRewrite : {
+                target : 'https://cdn.ycku.com',//目标
+                changeOrigin : true,            //改变源
+                pathRewrite : {                 //重写/api目录未空
                     '^/api' : ''
                 }
             }
