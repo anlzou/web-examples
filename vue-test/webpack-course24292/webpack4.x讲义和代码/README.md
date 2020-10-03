@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-03 09:18:36
+ * @LastEditTime: 2020-10-03 09:50:40
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -216,4 +216,15 @@ source-map                                //生产环境
 ### moudles
 ```
 npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader
+```
+
+## [16.watch监听和clean清理](../webpack4.x讲义和代码/讲义/16.watch监听和clean清理.pdf)
+1. 每次打包，都比较烦，耗时耗力，有一种解决方案：`watch` 文件监听；
+2. 这种解决方案，就是你打包时，就挂着监听你原始文件的变化，从而自动更新；
+3. 每次打包，都要手动删除，因为不删除的话，改了配置目录就会多出废目录或文件；
+4. 所以，使用 `clean-webpack-plugin` 插件，来处理这个问题；
+
+### moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin
 ```
