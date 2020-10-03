@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-03 09:50:40
+ * @LastEditTime: 2020-10-03 10:03:32
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -223,6 +223,24 @@ npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin 
 2. 这种解决方案，就是你打包时，就挂着监听你原始文件的变化，从而自动更新；
 3. 每次打包，都要手动删除，因为不删除的话，改了配置目录就会多出废目录或文件；
 4. 所以，使用 `clean-webpack-plugin` 插件，来处理这个问题；
+
+### moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin
+```
+
+## [17.HMR热替换](../webpack4.x讲义和代码/讲义/17.HMR热替换.pdf)
+1. 首先，页面调试有一个问题，就是当我们编辑了 css 或 js，它会自动刷新；
+2. 但如果有大量的 css 或 js，一个小修改，就要全部刷新，影响开发性能；
+3. 而 HMR 热替换就是解决这个问题，当 css 或 js 修改时，只刷新修改的部分；
+4. 对于 html 文件，不需要热替换，就一个文件；
+5. 开启 HMR 热替换，可以在启动服务时加上--hot，或者在 devServer 配置；
+```json
+devServer: {
+  hot : true
+},
+```
+6. ...
 
 ### moudles
 ```

@@ -1,3 +1,11 @@
+/*
+ * @Date        : 2020-07-10 20:13:34
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-03 10:13:38
+ * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\代码\17\src\js\index.js
+ * @Describe    : 
+ */
 //base.css
 require('css/base');
 require('css/less');
@@ -29,7 +37,7 @@ const loading = require('../img/loading.gif');
 // console.log(loading);
 
 let fn = (x, y) => x + y;
-//console.log(fn(10, 20));
+// console.log(fn(10, 20));
 
 class Person {
     #name;

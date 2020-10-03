@@ -1,3 +1,11 @@
+/*** 
+ * @Date        : 2020-07-10 20:13:34
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-03 10:11:30
+ * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\代码\17\src\css\base.css
+ * @Describe    : 
+ */
 /*base.css*/
 @import "font.css";
 :root {
@@ -5,7 +13,7 @@
 }
 
 body {
-    background-color: gray;
+    background-color: rgb(88, 161, 107);
 }
 #loading {
     width: 300px;
