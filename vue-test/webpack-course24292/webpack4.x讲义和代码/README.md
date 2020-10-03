@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-03 17:00:51
+ * @LastEditTime: 2020-10-03 20:33:04
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -273,4 +273,24 @@ npm i -D webpack-merge
 ### moudles
 ```
 npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin axios webpack-merge
+```
+
+## [20.打包优化和dist服务](../webpack4.x讲义和代码/讲义/20.打包优化和dist服务.pdf)
+1. `webpack` 提供了一个选项：`optimiztion` 来帮助我们优化；
+2. 只不过开启了生产环境，就自动开启了压缩，除了 `css` 需要我们自己弄；
+3. 我们使用自带的 `terser-webpack-plugin` 插件来设置自己的压缩选项；
+```
+npm i - D terser-webpack-plugin
+```
+1. 打包后，我们想要在静态服务器上测试，先要安装静态服务器；
+```
+npm i serve -g  //安装
+serve dist -s   //运行 dist 目录
+```
+### more
+- [serve](https://github.com/vercel/serve) 是基于node环境用来部署单页应用或静态站点的一个功能库
+
+### moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin axios webpack-merge terser-webpack-plugin serve
 ```
