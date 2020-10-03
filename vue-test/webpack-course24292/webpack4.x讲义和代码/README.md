@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-03 10:26:44
+ * @LastEditTime: 2020-10-03 17:00:51
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -255,7 +255,22 @@ Axios 设置跨域请求的问题。
 npm -D install axios
 ```
 
-moudles
+### moudles
 ```
 npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin axios
+```
+
+## [19.环境分离设置](../webpack4.x讲义和代码/讲义/19.环境分离设置.pdf)
+1. 当配置文件写的越发繁杂时，发现生产环境的配置和开发环境配置有冲突；
+2. 此时，我们希望有两套配置文件，一套用于开发环境，一套用于生产环境；
+3. 这里使用 js 合并插件 webpack-merge 来实现配置文件的分离保存；
+4. 我们创建另外两个 dev.config.js(开发)和 prod.config.js(生产)；
+5. 将原先的 webpack.config.js 改为 base.config.js，然后分离代码；
+```
+npm i -D webpack-merge
+```
+
+### moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader clean-webpack-plugin axios webpack-merge
 ```
