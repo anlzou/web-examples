@@ -2,7 +2,7 @@
  * @Date        : 2020-10-01 23:25:27
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-02 21:48:14
+ * @LastEditTime: 2020-10-03 08:48:47
  * @FilePath    : \webpack-course24292\webpack4.x讲义和代码\README.md
  * @Describe    : 
 -->
@@ -164,6 +164,23 @@ npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin 
 - 不带任何输入文件的情况下调用`tsc`，编译器会从当前目录开始去查找`tsconfig.json`文件，逐级向上搜索父目录。
 - 不带任何输入文件的情况下调用tsc，且使用命令行参数`--project`（或`-p`）指定一个包含`tsconfig.json`文件的目录。
 当命令行上指定了输入文件时，`tsconfig.json`文件会被忽略。
+
+### moudles
+```
+npm i -D webpack-dev-server webpack html-webpack-plugin mini-css-extract-plugin css-loader postcss-loader less-loader url-loader html-loader babel-loader @babel/preset-env @babel/plugin-proposal-class-properties optimize-css-assets-webpack-plugin sass sass-loader node-sass typescript ts-loader
+```
+
+## [14.Resolve模块解析](../webpack4.x讲义和代码/讲义/14.Resolve模块解析.pdf)
+1. 在 import 不限定后缀会出现无法载入；
+2. 所以，我们使用了 Resolve 模块解析的中 extensions 来进行配置；
+```js
+//模块解析
+resolve: {
+  //导入文件查找的限定后缀，默认.js 和.json
+  extensions: ['.ts', '.js', '.json' ]
+},
+```
+PS：导入语句是如果检测不到指定的会报错；
 
 ### moudles
 ```
