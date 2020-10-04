@@ -2,7 +2,7 @@
  * @Date        : 2020-10-04 08:58:25
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-04 14:40:33
+ * @LastEditTime: 2020-10-04 15:18:03
  * @FilePath    : \web-test\vue-test\vue-course24293\Vue.js工具篇讲义笔记\代码\demo\elm_demo2\src\main.js
  * @Describe    : 
  */
@@ -17,13 +17,16 @@ import store from './store'
 // 引入elmUI
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
-
+//可以参考 API 的解释，参数是一个插件，路由就是一个插件
+//这句话的意思是：初始化这个插件以便使用
 Vue.use(ElementUI);
 //去掉警告
 Vue.config.productionTip = false
 //根 Vue 实例(全局)
 new Vue({
+  //注册路由
   router,
+  //注册Vuex
   store,
   /**
    * Vue2.x 写法，配合了 ES6 箭头函数
