@@ -2,7 +2,7 @@
  * @Date        : 2020-10-04 08:58:25
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-04 15:20:10
+ * @LastEditTime: 2020-10-04 17:11:41
  * @FilePath    : \web-test\vue-test\vue-course24293\Vue.js工具篇讲义笔记\代码\demo\elm_demo2\src\router\index.js
  * @Describe    : 
  */
@@ -22,8 +22,17 @@ const routes = [{
     component: Home //加载的组件
   },
   {
-    path: '/about',
+    path: '/about/:id',
     name: 'About',
+    children: [{
+        path: "/profile",
+        component: () => import('../views/about/AboutProfile.vue')
+      },
+      {
+        path: "/posts",
+        component: () => import('../views/about/AboutPosts.vue')
+      }
+    ],
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

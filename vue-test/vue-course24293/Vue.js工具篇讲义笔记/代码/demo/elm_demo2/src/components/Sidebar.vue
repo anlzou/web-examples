@@ -2,14 +2,16 @@
  * @Date        : 2020-10-04 14:47:14
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-04 15:04:10
+ * @LastEditTime: 2020-10-04 16:11:59
  * @FilePath    : \web-test\vue-test\vue-course24293\Vue.js工具篇讲义笔记\代码\demo\elm_demo2\src\components\Sidebar.vue
  * @Describe    : 
 -->
 <template>
   <ul class="list">
     <li v-for="item in link">
-      <a href="#" @click="fun()">{{item}}</a>
+      <a href="#" @click="fun()">
+        <el-button>{{item}}</el-button>
+      </a>
     </li>
   </ul>
 </template>
