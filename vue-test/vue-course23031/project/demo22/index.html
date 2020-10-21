@@ -1,0 +1,49 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 15:55:29
+ * @FilePath    : \vue-course23031\project\demo22\index.html
+ * @Describe    : 组件的自定义事件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="input">{{value}}
+    </div>
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: "hello vue!",
+                    input: '',
+                    value: ''
+                }
+            },
+            watch: {
+                input(val, oldval) {
+                    console.log('监听');
+                    console.log(val, oldval)
+                    // 监听处理
+                    this.value = val + '|'
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

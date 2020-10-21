@@ -1,0 +1,58 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 16:06:20
+ * @FilePath    : \vue-course23031\project\demo22\index03.html
+ * @Describe    : 多层监听
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="input_value.name">{{value}}
+    </div>
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: "hello vue!",
+                    input_value: {
+                        name: ''
+                    },
+                    value: ''
+                }
+            },
+            // 方法
+            methods: {
+                getVal(val, oldVal) {
+                    this.value = val + '|'
+                }
+            },
+            computed: {
+                getName() {
+                    return this.input_value.name
+                }
+            },
+            // 监听变量，绑定方法
+            watch: {
+                getName: 'getVal'
+            },
+        })
+    </script>
+</body>
+
+</html>
