@@ -1,0 +1,88 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 10:32:29
+ * @FilePath    : \vue-course23031\project\demo10\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{checked}}</label>
+
+        <div>
+            <input type="checkbox" id="a" value="Mr.An" v-model="checkedList">
+            <label for="a">Mr.An</label>
+            <input type="checkbox" id="b" value="Mr.Lee" v-model="checkedList">
+            <label for="b">Mr.Lee</label>
+            <input type="checkbox" id="c" value="Mr.Wang" v-model="checkedList">
+            <label for="c">Mr.Wang</label>
+            Person:{{checkedList}}
+        </div>
+
+        <div>
+            <input type="radio" id="a" value="男" v-model="gender">
+            <label for="a">男</label>
+            <input type="radio" id="b" value="女" v-model="gender">
+            <label for="b">女</label>
+            Gender:{{gender}}
+        </div>
+
+        <div>
+            <select v-model="option">
+                <option>B</option>
+                <option>A</option>
+                <option>C</option>
+            </select>
+            option:{{option}}
+        </div>
+
+        <div>
+            <select v-model="option2" multiple>
+                <option>B</option>
+                <option>A</option>
+                <option>C</option>
+            </select>
+            option:{{option2}}
+        </div>
+    </div>
+
+
+    <script>
+        dataObj = {
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dataObj,
+                    flag: true,
+                    message: "anlzou",
+                    checked: false,
+                    checkedList: [],
+                    gender: '男',
+                    option: '',
+                    option2: []
+                }
+            },
+            methods: {
+
+            },
+            computed: {}
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css和style绑定</title>
+    <style>
+        .static {
+            color : red;
+        }
+        .active {
+            color : blue;
+        }
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+<!--    <div class="static" v-bind:class="{active : isActive, bold : isBold}">-->
+<!--    <div class="static" v-bind:class="isClass">-->
+<!--    <div class="static" v-bind:class="[active, bold]">-->
+    <div class="static" v-bind:class="classObject">
+        {{message}}
+    </div>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : 'Hello, Vue!',
+        // isActive : true,
+        // isBold : true
+        // isClass : {
+        //     active : true,
+        //     bold : true,
+        // }
+        // active : 'active',
+        // bold : 'bold'
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+            classObject() {
+                //...
+                return {
+                    active : true,
+                    bold : true,
+                }
+            }
+        },
+
+        //方法
+        methods : {
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

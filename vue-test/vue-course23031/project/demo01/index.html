@@ -1,0 +1,90 @@
+<!--
+ * @Date        : 2020-10-19 22:03:59
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-19 23:32:35
+ * @FilePath    : \vue-course23031\project\demo1\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <p v-show="condition" v-bind:class="[p1.active, p1.bold]">{{start}} {{message}} {{end}}</p>
+        <p v-for="(item, index) in 3" :key="index" class="static" v-bind:class="{active : isActive, bold : isBold}">
+            {{welcome}}</p>
+        <p v-bind:style="dataObj.styleObject">v-bind:style=""</p>
+    </div>
+    <script>
+        Vue.config.productionTip = false;
+
+        const dataObj = {
+            styleObject: {
+                color: 'blue'
+            }
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    start: '[',
+                    message: 'Hello, Vue!',
+                    end: ']',
+                    condition: true,
+                    isActive: true,
+                    isBold: true,
+                    p1: {
+                        active: 'active',
+                        bold: 'bold'
+                    },
+                    dataObj
+                }
+            },
+            methods: {
+                // welcome() {
+                //     console.log('执行了方法' + Math.random());
+                //     return this.start + this.message + this.end;
+                // }
+            },
+            // 计算方法,有缓存
+            computed: {
+                welcome: {
+                    get() {
+                        console.log('执行了计算属性' + Math.random());
+                        return this.start + this.message + this.end;
+                    },
+                    set(value) {
+                        this.start = value.split(',')[0];
+                        this.end = value.split(',')[1];
+                        console.log('执行了 setter');
+                    }
+                }
+            },
+        })
+    </script>
+    <style>
+        .static {
+            font-size: 20px;
+        }
+
+        .active {
+            font-style: initial;
+            color: aqua;
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+    </style>
+</body>
+
+</html>

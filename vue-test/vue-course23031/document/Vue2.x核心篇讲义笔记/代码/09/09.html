@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件处理能力</title>
+</head>
+<body>
+
+<div id="app">
+    <button v-on:click="counter += 1">增加</button>
+    <span>统计：{{counter}}</span>
+
+    <button v-on:click.once="greet">执行事件</button>
+
+    <div v-on:click="say('div!', $event)">
+        <button v-on:click.stop="say('world!', $event)">传递参数</button>
+    </div>
+
+    <form action="http://www.baidu.com">
+        <button v-on:click.prevent="" type="submit">提交</button>
+    </form>
+
+    <input type="text" v-on:keyup.enter="submit">
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : 'Hello, Vue!',
+        counter : 0,
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+
+        },
+
+        //方法
+        methods : {
+            greet(event) {
+                alert(this.message + event.target.innerText);
+            },
+            say(info, event) {
+                //阻止事件冒泡
+                //event.stopPropagation();
+                alert('Hello, ' + info + event.target.innerText);
+            },
+            submit() {
+                alert('回车键');
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

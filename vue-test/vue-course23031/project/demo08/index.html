@@ -1,0 +1,70 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 09:50:30
+ * @FilePath    : \vue-course23031\project\demo08\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="flag">
+            <li v-for="(item, index) in dataObj.array" v-bind:key="item.id"><input
+                    type="checkbox">{{index}}.{{item.city}}
+            </li>
+        </template>
+        <button v-on:click="addData()">添加</button>
+    </div>
+
+    <script>
+        dataObj = {
+            array: [
+                {
+                    id: 1,
+                    city: "北京"
+                },
+                {
+                    id: 2,
+                    city: "上海"
+                },
+                {
+                    id: 3,
+                    city: "天津"
+                }
+            ]
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dataObj,
+                    flag: true
+                }
+            },
+            methods: {
+                addData() {
+                    this.dataObj.array.unshift({ id: this.dataObj.array.length + 1, city: "广州" })
+                }
+            },
+            computed: {
+                arrayData() {
+                    this.dataObj.array.splice(1, 1);
+                    return this.dataObj.array;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

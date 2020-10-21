@@ -1,0 +1,73 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 14:50:31
+ * @FilePath    : \vue-course23031\project\demo11\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <label for="checkobx">
+                <input type="checkbox" id="checkbox" v-bind:value="flag" v-model="flag">
+                <span>{{flag}}</span>
+            </label>
+        </div>
+        <div>
+            <label v-bind:for="'checked' + index" v-for="(item,index) in dataNames">
+                <input type="checkbox" v-bind:value="item" v-bind:id="'checked' + index" v-model="checkedNames">
+                <span>{{item}}</span>
+            </label>
+            人员：{{checkedNames}}
+        </div>
+        <!-- 
+            修饰符
+            number:转换为number类型
+            trim:去掉左右两边的空格
+            lazy:如回车或失去焦点触发
+        -->
+        <div>
+            <input type="text" v-model.number.trim="number">
+            {{typeof number}}
+        </div>
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        dataObj = {
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dataObj,
+                    flag: true,
+                    dataNames: ["a", "b", "c"],
+                    checkedNames: [],
+                    number: '0'
+                }
+            },
+            methods: {
+
+            },
+            computed: {}
+        })
+    </script>
+</body>
+
+</html>

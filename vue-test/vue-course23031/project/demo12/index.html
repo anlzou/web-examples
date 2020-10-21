@@ -1,0 +1,123 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 16:08:13
+ * @FilePath    : \vue-course23031\project\demo12\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <html-1></html-1>
+        <html-1></html-1>
+        <div id="mount-point"></div>
+        <button-a></button-a>
+        <button-a></button-a>
+        <button-b></button-b>
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        /**
+         * (1) .Vue.extend()是一个基础构造器(全局 API)，意图创建一个子类；
+         * (2) .Vue.component()是注册组件，参数 1 为名称，参数 2 为.extend()；
+         * (3) .查看一下官方手册 API 部分，可以找到详细的说明；
+         */
+        //李炎恢老师教程 1.构建组件模版对象
+        const htmlElement = Vue.extend({
+            template: `
+            <div>
+                <h3>全局组件注册</h3>
+                <p>这是一个全局注册的组件！</p>
+            </div>
+            `
+        })
+        //2.注册全局组件
+        Vue.component('html-1', htmlElement);
+
+        // 官方方法
+        // 创建构造器
+        var Profile = Vue.extend({
+            template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+            data: function () {
+                return {
+                    firstName: 'Walter',
+                    lastName: 'White',
+                    alias: 'Heisenberg'
+                }
+            }
+        })
+        // 创建 Profile 实例，并挂载到一个元素上。
+        new Profile().$mount('#mount-point')
+        // 等同于
+        // new Profile({ el: '#mount-point' })
+
+        //创建 button-a 全局组件
+        Vue.component('button-a', {
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            template: `
+            <button v-on:click="count++">
+                点击量：{{count}}
+            </button>
+            `
+        })
+
+        // 局部组件,只给一个Vue对象使用
+        const buttonComonent = {
+            template: `
+            <button @click='text'>{{name}}</button>
+            `,
+            data() {
+                return {
+                    name: '按钮'
+                }
+            },
+            methods: {
+                text() {
+                    alert('局部组件')
+                }
+            },
+        };
+
+        dataObj = {
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dataObj,
+
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+
+            },
+            components: {
+                'button-b': buttonComonent
+            }
+        })
+    </script>
+</body>
+
+</html>

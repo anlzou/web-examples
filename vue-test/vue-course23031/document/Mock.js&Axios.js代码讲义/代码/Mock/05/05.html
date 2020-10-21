@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+        // axios.get('https://cdn.liyanhui.com/data.json?id=10&status=5')
+        //     .then(res => {
+        //         console.log(res.data);
+        //     });
+
+        // axios.get('https://cdn.liyanhui.com/data.json', {
+        //         params : {
+        //             id : 1,
+        //             status : 5
+        //         }
+        // }).then(res => {
+        //         console.log(res.data);
+        //     });
+
+        // axios({
+        //     method : 'get',
+        //     url : 'https://cdn.liyanhui.com/data.json',
+        //     params : {
+        //         id : 1,
+        //         status : 5
+        //     }
+        // }).then(res => {
+        //     console.log(res.data);
+        // });
+
+        // axios({
+        //     method : 'get',
+        //     url : 'https://cdn.liyanhui.com/data.json',
+        //     params : {
+        //         id : 1,
+        //         status : 5
+        //     }
+        // }).then(res => {
+        //     console.log('1.异步');
+        // });
+        //
+        // axios({
+        //     method : 'get',
+        //     url : 'https://cdn.liyanhui.com/data.json',
+        //     params : {
+        //         id : 1,
+        //         status : 5
+        //     }
+        // }).then(res => {
+        //     console.log('2.异步');
+        // });
+        //
+        // axios({
+        //     method : 'get',
+        //     url : 'https://cdn.liyanhui.com/data.json',
+        //     params : {
+        //         id : 1,
+        //         status : 5
+        //     }
+        // }).then(res => {
+        //     console.log('3.异步');
+        // });
+
+
+        // axios.all([
+        //     axios({
+        //         url : 'https://cdn.liyanhui.com/data.json',
+        //         data : '1.异步'
+        //     }),
+        //     axios({
+        //         url : 'https://cdn.liyanhui.com/data.json',
+        //         data : '2.异步'
+        //     }),
+        //     axios({
+        //         url : 'https://cdn.liyanhui.com/data.json',
+        //         data : '3.异步'
+        //     }),
+        // ]).then(value => {
+        //     for (let i = 0; i < value.length; i++) {
+        //         console.log(value[i].config.data);
+        //     }
+        // });
+
+        axios.all([
+            axios({
+                url : 'https://cdn.liyanhui.com/data.json',
+                data : '1.异步'
+            }),
+            axios({
+                url : 'https://cdn.liyanhui.com/data.json',
+                data : '2.异步'
+            }),
+            axios({
+                url : 'https://cdn.liyanhui.com/data.json',
+                data : '3.异步'
+            }),
+        ]).then(axios.spread((res1, res2, res3) => {
+            console.log(res1.config.data);
+            console.log(res2.config.data);
+            console.log(res3.config.data);
+        }));
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

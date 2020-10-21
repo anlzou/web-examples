@@ -1,0 +1,51 @@
+<!--
+ * @Date        : 2020-10-21 08:48:08
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 08:49:01
+ * @FilePath    : \vue-course23031\project\demo\src\page\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="father">
+            <h3>这里是父组件</h3>
+            <child>
+                <span>菜单1</span>
+                <span>菜单2</span>
+                <span>菜单3</span>
+            </child>
+        </div>
+    </div>
+    <template id="child">
+        <div class="child">
+            <h3>这里是子组件</h3>
+            <slot></slot>
+        </div>
+    </template>
+    <script>
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            components: {
+                child: {
+                    template: '#child'
+                }
+            }
+
+        });
+
+    </script>
+</body>
+
+</html>

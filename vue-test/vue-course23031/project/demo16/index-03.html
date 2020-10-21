@@ -1,0 +1,65 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 21:08:09
+ * @FilePath    : \vue-course23031\project\demo16\index-03.html
+ * @Describe    : 通过使用计算属性和方法数据更改
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <html-a v-bind:count="count"></html-a>
+        <p>外部{{count}}</p>
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    count: 5
+                }
+            },
+            components: {
+                'html-a': {
+                    data() {
+                        return {
+                            childCount: this.count
+                        }
+                    },
+                    // 子组件修改父组件复制的值，不报错
+                    template: `
+                        <button v-on:click='clickChildCount'>{{changeChildCount}}</button>
+                `,
+                    props: ['count'],
+                    methods: {
+                        clickChildCount() {
+                            this.childCount++;
+                        }
+                    },
+                    computed: {
+                        changeChildCount() {
+                            return this.childCount
+                        }
+                    },
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

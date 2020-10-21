@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue2.x入门和安装</title>
+</head>
+<body>
+
+<div id="app">
+    {{message}}
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    const app = new Vue({
+        el : '#app',
+        data : {
+            message : 'Hello, Vue!'
+        }
+    });
+</script>
+</body>
+</html>

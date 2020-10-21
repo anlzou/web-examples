@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模板语法和指令</title>
+    <style>
+        .red {
+            color: red;
+        }
+        .blue {
+            color: blue;
+        }
+    </style>
+</head>
+<body>
+
+<!--<div id="app" v-once>-->
+<div id="app">
+    {{message}}
+    <button v-on:click="alert">点击</button>
+    <button @click="alert">点击</button>
+    <div v-html="rawHtml"></div>
+    <div :class="color">Vuex</div>
+    <div v-bind:[key]="color">Vue3</div>
+    <div :[key]="color">Vue4</div>
+    <div>{{num + 1}} {{true ? '真' : '假'}} {{message.split(' ')}}</div>
+    <div v-if="flag">为true时才可以看到我</div>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : 'Hello, Vue!',
+        rawHtml : '<span style="color:red;">Vue2</span>',
+        color : 'red',
+        num : 10,
+        flag : false,
+        key : 'class'
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //方法
+        methods : {
+            alert : function () {
+                alert('点击');
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

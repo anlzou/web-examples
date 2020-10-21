@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组检测和key</title>
+</head>
+<body>
+
+<div id="app">
+    <button v-on:click="add">添加</button>
+    <ul>
+        <li v-for="item in array" v-bind:key="item.id"><input type="checkbox"> {{item.city}}</li>
+    </ul>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : 'Hello, Vue!',
+        flag : false,
+        array : [
+            {
+                id : 1,
+                city : '北京'
+            },
+            {
+                id : 2,
+                city : '上海'
+            },
+            {
+                id : 3,
+                city : '深圳'
+            },
+        ],
+        object : {
+            name : 'Mr.Lee',
+            age : 100,
+            gender : '男'
+        }
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+
+        },
+
+        //方法
+        methods : {
+            add() {
+                this.array.unshift({id : 4, city : '重庆'});
+            }
+        }
+    });
+
+    //app.array.push({city : '重庆'});
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

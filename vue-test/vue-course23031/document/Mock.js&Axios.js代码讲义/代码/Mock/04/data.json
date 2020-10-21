@@ -1,0 +1,79 @@
+[
+  {
+    "id": 19,
+    "username": "蜡笔小新",
+    "gender": "男",
+    "email": "xiaoxin@163.com",
+    "price": "60.00"
+  },
+  {
+    "id": 20,
+    "username": "路飞",
+    "gender": "男",
+    "email": "lufei@163.com",
+    "price": "70.00"
+  },
+  {
+    "id": 21,
+    "username": "黑崎一护",
+    "gender": "男",
+    "email": "yihu@163.com",
+    "price": "80.00"
+  },
+  {
+    "id": 24,
+    "username": "小明",
+    "gender": "男",
+    "email": "xiaoming@163.com",
+    "price": "90.00"
+  },
+  {
+    "id": 25,
+    "username": "孙悟饭",
+    "gender": "男",
+    "email": "wufan@163.com",
+    "price": "100.00"
+  },
+  {
+    "id": 26,
+    "username": "孙悟天",
+    "gender": "男",
+    "email": "wutian@163.com",
+    "price": "110.00"
+  },
+  {
+    "id": 27,
+    "username": "樱桃小丸子",
+    "gender": "女",
+    "email": "yingtao@163.com",
+    "price": "77.00"
+  },
+  {
+    "id": 29,
+    "username": "孙悟空",
+    "gender": "男",
+    "email": "wukong@163.com",
+    "price": "100.00"
+  },
+  {
+    "id": 76,
+    "username": "李白",
+    "gender": "男",
+    "email": "UPPER(EMAIL)",
+    "price": "52.00"
+  },
+  {
+    "id": 79,
+    "username": "辉夜",
+    "gender": "女",
+    "email": "HUIYE@163.COM",
+    "price": "91.00"
+  },
+  {
+    "id": 80,
+    "username": "李黑",
+    "gender": "男",
+    "email": "lihei@163.com",
+    "price": "99.00"
+  }
+]

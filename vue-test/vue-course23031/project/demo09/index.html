@@ -1,0 +1,63 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 10:11:41
+ * @FilePath    : \vue-course23031\project\demo09\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="greet('haha', $event)">添加</button>
+
+        <div v-on:click="say('div', $event)">
+            <button v-on:click.stop="say('world!')">传递参数</button>
+        </div>
+
+        <input v-on:keyup.enter="submit">
+        <!-- 
+            .enter / .tab /.delete / .esc / .space / .up / .down / .left / .right
+         -->
+    </div>
+
+
+    <script>
+        dataObj = {
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dataObj,
+                    flag: true,
+                    message: "anlzou"
+                }
+            },
+            methods: {
+                greet(info, event) {
+                    alert('' + info + this.message + event.target.innerText);
+                },
+                say(info) {
+                    alert('' + info)
+                },
+                submit() {
+                    alert('enter')
+                }
+            },
+            computed: {}
+        })
+    </script>
+</body>
+
+</html>

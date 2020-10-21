@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        axios.get('http://localhost:63342/Mock/04/data.json?_ijt=cat6bibqdiut2fkge51rtfs9sg')
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log('错误' + err);
+            });
+    </script>
+</head>
+<body>
+
+</body>
+</html>

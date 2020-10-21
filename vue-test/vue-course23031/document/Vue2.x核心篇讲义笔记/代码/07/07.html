@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>循环列表渲染</title>
+</head>
+<body>
+
+<div id="app">
+<!--    <ul>-->
+<!--        <li v-for="item in array">{{item.city}}</li>-->
+<!--    </ul>-->
+
+<!--    <ul>-->
+<!--        <li v-for="(item,index) of array">{{index}}.{{item.city}}</li>-->
+<!--    </ul>-->
+
+<!--    <ul>-->
+<!--        <li v-for="(value,name,key) in object">{{key}}.{{name}}.{{value}}</li>-->
+<!--    </ul>-->
+
+<!--        <ul>-->
+<!--            <template v-for="item in array">-->
+<!--                <li>{{item.city}}</li>-->
+<!--                <li>&#45;&#45;&#45;&#45;</li>-->
+<!--            </template>-->
+<!--        </ul>-->
+
+<!--    <div v-for="n in 10">{{n}}</div>-->
+
+<!--        <ul>-->
+<!--            <template v-if="flag">-->
+<!--                <li v-for="item in array">{{item.city}}</li>-->
+<!--            </template>-->
+<!--        </ul>-->
+
+<!--        <ul>-->
+<!--            <li v-for="item in array" v-if="item.city != '上海'">{{item.city}}</li>-->
+<!--        </ul>-->
+
+        <ul>
+            <li v-for="item in arrayCity">{{item.city}}</li>
+        </ul>
+
+
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : 'Hello, Vue!',
+        flag : false,
+        array : [
+            {
+                city : '北京'
+            },
+            {
+                city : '上海'
+            },
+            {
+                city : '深圳'
+            },
+        ],
+        object : {
+            name : 'Mr.Lee',
+            age : 100,
+            gender : '男'
+        }
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+            arrayCity() {
+                this.array.splice(1,1);
+                return this.array;
+            }
+        },
+
+        //方法
+        methods : {
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

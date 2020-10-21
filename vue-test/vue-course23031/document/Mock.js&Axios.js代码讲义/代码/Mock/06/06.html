@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+
+        // axios.defaults.baseURL = 'https://cdn.liyanhui.com';
+        //
+        // axios.all([
+        //     axios({
+        //         url : '/data.json',
+        //         data : '1.异步'
+        //     }),
+        //     axios({
+        //         url : '/data.json',
+        //         data : '2.异步'
+        //     }),
+        //     axios({
+        //         url : '/data.json',
+        //         data : '3.异步'
+        //     }),
+        // ]).then(axios.spread((res1, res2, res3) => {
+        //     console.log(res1.config.data);
+        //     console.log(res2.config.data);
+        //     console.log(res3.config.data);
+        // }));
+
+        const myAxios = axios.create();
+        myAxios.defaults.baseURL = 'https://cdn.liyanhui.com';
+
+        //请求拦截
+        myAxios.interceptors.request.use(config => {
+            console.log('loading...');
+            //config.url = '/data2.json';
+            //config.timeout = 50;
+            return config;
+        });
+
+        //响应拦截
+        myAxios.interceptors.response.use(response => {
+            return response.data;
+        });
+
+
+
+        myAxios.request({
+            method : 'get',
+            url : '/data.json',
+        }).then(res => {
+            console.log(res);
+        });
+
+
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

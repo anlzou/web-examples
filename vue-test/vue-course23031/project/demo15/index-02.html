@@ -1,0 +1,64 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 20:47:52
+ * @FilePath    : \vue-course23031\project\demo15\index-02.html
+ * @Describe    : 组件嵌套
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <html-a v-bind:parent-array="array" v-bind:parent-object="object" v-bind:text="message" v-if="flag"></html-a>
+        <html-a v-bind:parent-array="array" v-bind:parent-object="object" v-bind:text="message" v-if="!flag"></html-a>
+        <html-a v-bind:parent-array="array" v-bind:parent-object="object" v-bind:text="message" v-if="flag"></html-a>
+
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: 'Hello, Vue!',
+                    array: [1, 2, 3, 4, 5],
+                    object: {
+                        name: 'Mr.Lee',
+                        age: 100
+                    },
+                    flag: true,
+                    number: 200,
+                }
+            },
+            components: {
+                'html-a': {
+                    template: `
+                    <div>
+                        <div>{{parentObject}}</div>
+                        <div>{{parentObject.age}}</div>
+                        <div>{{parentArray}}</div>
+                        <div>{{parentArray[2]}}</div>
+                        <div>{{text}}</div>
+                    </div>
+                `,
+                    props: ["parentObject", "parentArray", "text"]
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

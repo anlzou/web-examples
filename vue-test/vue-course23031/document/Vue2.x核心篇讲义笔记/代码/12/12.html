@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组件的注册</title>
+</head>
+<body>
+
+<div id="app">
+    <html-a></html-a>
+    <html-a></html-a>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    const htmlElement = Vue.extend({
+        template : `
+            <div>
+                <h3>全局注册</h3>
+                <p>这个是全局注册</p>
+            </div>
+        `
+    });
+
+    Vue.component('html-a', htmlElement);
+
+
+    //数据对象
+    const dataObj = {
+        message : '',
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+
+        },
+
+        //方法
+        methods : {
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

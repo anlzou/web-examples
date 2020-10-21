@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>值绑定和修饰符</title>
+</head>
+<body>
+
+<div id="app">
+    <label for="checkbox">
+        <input type="checkbox" id="checkbox" v-bind:value="checked" v-model="checked">
+        <span>{{checked}}</span>
+    </label>
+
+    <br>
+
+    <label v-bind:for="'checked' + index" v-for="(item,index) in dataNames">
+        <input type="checkbox" v-bind:id="'checked' + index" v-bind:value="item" v-model="checkedNames">
+        <span>{{item}}</span>
+    </label>
+
+    人员：{{checkedNames}}
+
+    <br><br>
+
+    <input type="text" v-model.lazy="message">
+    <span>{{message}}</span>
+
+    <input type="text" v-model.number.trim="number">
+    <span>{{typeof number}}</span>
+
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : '',
+        checked : false,
+        checkedNames : [],
+        dataNames : ['Mr.Lee', 'Mr.Wang', 'Mr.Zhang'],
+        number : '0'
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+
+        },
+
+        //方法
+        methods : {
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

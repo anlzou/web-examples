@@ -1,0 +1,55 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 14:46:17
+ * @FilePath    : \vue-course23031\project\demo19\index02.html
+ * @Describe    : 组件的自定义事件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <html-a v-bind:text="message"></html-a>
+    </div>
+
+    <script type="text/x-template" id="html-a">
+        <div>{{text}}</div>
+    </script>
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: "hello vue!"
+                }
+            },
+            // 子组件
+            components: {
+                'html-a': {
+                    data() {
+                        return {
+                            name: "Mr.An"
+                        }
+                    },
+                    template: "#html-a",
+                    props: ['text']
+                },
+            },
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域插槽</title>
+</head>
+<body>
+
+<div id="app">
+    <html-a v-bind:text="message" v-slot="{obj:user}">
+        {{user.id}}
+    </html-a>
+</div>
+
+<template id="html-a">
+    <div>
+        <span>{{text}}</span>
+        <slot v-bind:obj="obj">{{obj.name}}</slot>
+    </div>
+</template>
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //创建一个Vue对象
+    //父组件
+    const app = new Vue({
+        el : '#app',
+        data : {
+            message : 'Hello, Vue!'
+        },
+        components : {
+            'html-a' : {
+                data() {
+                    return {
+                        obj : {
+                            id : 1001,
+                            name : 'Mr.Lee',
+                            gender : '男'
+                        }
+                    }
+                },
+                template : '#html-a',
+                props : ['text']
+            }
+        },
+
+        //计算属性，固定名称
+        computed : {
+
+        },
+
+        //方法
+        methods : {
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

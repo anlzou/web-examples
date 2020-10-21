@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>css和style绑定</title>
+</head>
+<body>
+
+<div id="app">
+
+<!--    <div style="font-size:20px;color:red;" v-bind:style="{color : activeColor}">-->
+<!--    <div style="font-size:20px;color:red;" v-bind:style="styleObject">-->
+<!--    <div style="font-size:20px;color:red;" v-bind:style="[styleObject]">-->
+    <div style="font-size:20px;color:red;" v-bind:style="styleObject">
+        {{message}}
+    </div>
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : 'Hello, Vue!',
+        //activeColor : 'blue'
+        // styleObject : {
+        //    color : 'blue',
+        //     fontSize : '30px'
+        // }
+
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+            styleObject() {
+                return {
+                    color : 'blue',
+                    fontSize : '30px'
+                }
+            }
+        },
+
+        //方法
+        methods : {
+
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

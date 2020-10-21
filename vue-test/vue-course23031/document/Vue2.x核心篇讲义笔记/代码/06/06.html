@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条件判断渲染</title>
+</head>
+<body>
+
+<div id="app">
+    <div v-if="flag">
+        {{message}}
+    </div>
+    <div v-else-if="flag === false">else-if</div>
+    <div v-else>else</div>
+
+    <template v-if="flag">
+        <label for="reg">注册</label>
+        <input type="text" id="reg">
+    </template>
+
+    <template v-else>
+        <label for="login">登录</label>
+        <input type="text" id="login">
+    </template>
+
+    <div v-show="flag">show</div>
+
+    <input type="button" value="切换" v-on:click="toggleIf">
+
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        message : 'Hello, Vue!',
+        flag : false
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+
+        },
+
+        //方法
+        methods : {
+            toggleIf() {
+                this.flag = !this.flag;
+            }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

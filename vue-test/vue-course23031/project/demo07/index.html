@@ -1,0 +1,62 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 09:31:18
+ * @FilePath    : \vue-course23031\project\demo07\index.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <template v-if="flag">
+            <ul v-for="(item, index) in arrayData">{{index}}.{{item.city}}</ul>
+        </template>
+    </div>
+
+    <script>
+        dataObj = {
+            array: [
+                {
+                    city: "北京"
+                },
+                {
+                    city: "上海"
+                },
+                {
+                    city: "天津"
+                }
+            ]
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dataObj,
+                    flag: true
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+                arrayData() {
+                    this.dataObj.array.splice(1, 1);
+                    return this.dataObj.array;
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

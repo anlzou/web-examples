@@ -1,0 +1,65 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 09:37:55
+ * @FilePath    : \vue-course23031\project\demo18\index02.html
+ * @Describe    : 组件的自定义事件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{count}}
+        <html-a v-bind:count.sync="count"></html-a>
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data: {
+                count: 5
+            },
+            // 子组件
+            components: {
+                'html-a': {
+                    data() {
+                        return {
+                            childCount: this.count
+                        }
+                    },
+                    template: `
+                    <div>
+                        子组件sync父组件数据：<button v-on:click="childClickSync">{{childCount}}</button><br>
+                        子组件copy父组件数据：<button v-on:click="childClick">{{childCount}}</button>
+                    </div>
+                `,
+                    methods: {
+                        childClickSync() {
+                            // 父子组件同步数据
+                            this.$emit('update:count', ++this.childCount)
+                        },
+                        childClick() {
+                            this.childCount++;
+                        }
+                    },
+                    props: ['count']
+                },
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,108 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 20:09:04
+ * @FilePath    : \vue-course23031\project\demo14\index.html
+ * @Describe    : 组件嵌套
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <html-a></html-a>
+        <html-b text='haha'></html-b>
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        // 独立子组件
+        const childComponent = {
+            data() {
+                return {
+                    message: '---独立子组件'
+                }
+            },
+            template: `
+                <div>{{textSelf}}{{message}}</div>
+            `,
+            props: ['textSelf']
+        }
+
+        //1号父组件
+        Vue.component('html-a', {
+            template: `
+                <div>
+                    <div>{{message}}</div>
+                    <html-a-child textChild='hi'></html-a-child>
+                    <html-child-self text-self='anlzou'></html-child-self>
+                </div>
+            `,
+            data() {
+                return {
+                    message: "1号父组件"
+                }
+            },
+            components: {
+                'html-a-child': {
+                    template: `
+                        <div>{{textChild}}{{message}}</div>
+                    `,
+                    data() {
+                        return {
+                            message: "--1号子组件"
+                        }
+                    },
+                    props: ['textChild']
+                },
+                'html-child-self': childComponent
+            }
+        })
+
+        //2号父组件
+        Vue.component('html-b', {
+            template: `
+                <div>{{text}}{{message}}</div>
+            `,
+            data() {
+                return {
+                    message: "-2号父组件"
+                }
+            },
+            props: ['text']
+        })
+
+        dataObj = {
+        }
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    dataObj,
+                }
+            },
+            methods: {
+
+            },
+            computed: {
+
+            },
+            components: {
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-20 21:54:21
+ * @FilePath    : \vue-course23031\project\demo17\index.html
+ * @Describe    : 组件嵌套
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <html-a v-bind:child-num="count" v-bind:child-age="age" v-bind:child-arr="['anlzou','an']"
+            v-bind:child-obj="{'name':'anlzou'}" v-bind:child-price="99"></html-a>
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    age: "20",
+                    count: 5
+                }
+            },
+            components: {
+                'html-a': {
+                    // 子组件强制修改父组件的值，可以修改，但是报错
+                    template: `
+                    <div>
+                        <div>number: {{childNum}}</div>
+                        <div>age: {{childAge}}</div>
+                        <div>string: {{childStr}}</div>
+                        <div>array: {{childArr}}</div>
+                        <div>object: {{childObj}}</div>
+                        <div>自定义: {{childPrice}}</div>
+                    </div>
+                `,
+                    props: {
+                        // 类型限制
+                        childNum: Number,
+                        // 可以是该两种类型
+                        childAge: [Number, String],
+                        // 带默认值
+                        childStr: {
+                            type: String,
+                            default: "no str"
+                        },
+                        // 数组的默认值
+                        childArr: {
+                            type: Array,
+                            required: true, //必须 v-bind 绑定，不能不传
+                            default() {
+                                return ["null"]
+                            }
+                        },
+                        // 对象的默认值
+                        childObj: {
+                            type: Object,
+                            default() {
+                                return { "default": "none" }
+                            }
+                        },
+                        // 自定义
+                        childPrice: {
+                            type: Number,
+                            // 自定义函数名，固定
+                            validator(value) {
+                                return value > 90; //自定义验证，不成立报错
+                            },
+                            default: 100
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

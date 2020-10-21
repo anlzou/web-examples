@@ -1,0 +1,50 @@
+<!--
+ * @Date        : 2020-10-21 08:48:08
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 15:30:16
+ * @FilePath    : \vue-course23031\project\demo\src\page\index02.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="father">
+            <h3>这里是父组件</h3>
+            <child>
+                <!-- slot-scope：废弃语法 -->
+                <div slot-scope="user">
+                    {{user.data}}
+                </div>
+            </child>
+        </div>
+    </div>
+    <script>
+        Vue.component('child', {
+            template: '' +
+                '<div class="child">\n' +
+                '    <h3>这里是子组件</h3>\n' +
+                '    <slot  :data="data"></slot>\n' +
+                '  </div>',
+            data: function () {
+                return {
+                    data: ['zhangsan', 'lisi', 'wanwu', 'zhaoliu', 'tianqi', 'xiaoba']
+                }
+            }
+        });
+        var vm = new Vue({
+            el: '#app',
+        });
+    </script>
+</body>
+
+</html>

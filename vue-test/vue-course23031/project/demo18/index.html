@@ -1,0 +1,80 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 09:17:45
+ * @FilePath    : \vue-course23031\project\demo18\index.html
+ * @Describe    : 组件的自定义事件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        父组件: {{message}}
+        <html-a v-on:child-event="parentFn"></html-a>
+        <html-b v-bind:text="message"></html-b>
+    </div>
+
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: "hello vue!"
+                }
+            },
+            // 子组件
+            components: {
+                'html-a': {
+                    data() {
+                        return {
+                            name: "Mr.An"
+                        }
+                    },
+                    template: `
+                    <div>
+                        <button v-on:click="childClick(name)">{{name}}</button>
+                    </div>
+                `,
+                    methods: {
+                        childClick(name) {
+                            this.$emit('child-event', name);
+                        }
+                    }
+                },
+                'html-b': {
+                    data() {
+                        return {
+                        }
+                    },
+                    template: `
+                    <div>
+                        子组件: {{text}}
+                    </div>
+                `,
+                    props: ['text']
+                }
+            },
+            methods: {
+                parentFn(name) {
+                    console.log('父组件得到子组件的信息！' + name);
+                    this.message = name;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

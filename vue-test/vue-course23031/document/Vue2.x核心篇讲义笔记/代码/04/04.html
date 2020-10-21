@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算属性和setter</title>
+</head>
+<body>
+
+<!--<div id="app" v-once>-->
+<div id="app">
+    <!--   {{start}} {{message}} {{end}}-->
+<!--    {{welcome()}} {{welcome()}} {{welcome()}}-->
+        {{welcome}}  {{welcome}} {{welcome}}
+</div>
+
+
+<script src="../js/vue.js"></script>
+<script>
+    //去掉警告
+    Vue.config.productionTip = false;
+
+    //数据对象
+    const dataObj = {
+        start : '[',
+        message : 'Hello, Vue!',
+        end : ']'
+    };
+
+    //创建一个Vue对象
+    const app = new Vue({
+        el : '#app',
+        data : dataObj,
+
+        //计算属性，固定名称
+        computed : {
+            // welcome() {
+            //     console.log('执行了方法！' + Math.random());
+            //     return this.start + this.message + this.end;
+            // }
+            welcome : {
+                get() {
+                    console.log('执行了方法！' + Math.random());
+                    return this.start + this.message + this.end;
+                },
+                set(value) {
+                    this.start = value.split(',')[0];
+                    this.end = value.split(',')[1];
+                }
+            }
+        },
+
+        //方法
+        methods : {
+            // welcome() {
+            //     console.log('执行了方法！' + Math.random());
+            //     return this.start + this.message + this.end;
+            // }
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
