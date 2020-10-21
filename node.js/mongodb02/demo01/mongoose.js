@@ -2,7 +2,7 @@
  * @Date        : 2020-10-21 10:43:41
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-21 17:15:22
+ * @LastEditTime: 2020-10-21 17:17:40
  * @FilePath    : \mongodb02\demo01\mongoose.js
  * @Describe    : 
  */
@@ -14,9 +14,9 @@
 var mongoose = require('mongoose');
 
 var options = {
-    db_user: "xxx",//添加的普通账户名
-    db_pwd: "xxx",
-    db_host: "xxx",
+    db_user: "xx",//添加的普通账户名
+    db_pwd: "xx",
+    db_host: "xx",
     db_port: 27017,
     db_name: "test",//数据库名称
     useNewUrlParser: true
