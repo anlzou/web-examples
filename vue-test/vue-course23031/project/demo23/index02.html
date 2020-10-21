@@ -1,0 +1,58 @@
+<!--
+ * @Date        : 2020-10-20 09:20:37
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-21 16:28:48
+ * @FilePath    : \vue-course23031\project\demo23\index02.html
+ * @Describe    : 组件的自定义事件
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="input.name">{{value}}|{{value2+value}}
+    </div>
+
+    <script>
+        Vue.config.devtools = false
+        Vue.config.productionTip = false
+
+        var app = new Vue({
+            el: "#app",
+            data() {
+                return {
+                    message: "hello vue!",
+                    input: {
+                        name: '',
+                        age: 100
+                    },
+                    value: '',
+                    value2: ''
+                }
+            },
+            methods: {
+                // obj:input对象
+                getVal(obj) {
+                    this.value = obj.name
+                    this.value2 = obj.age
+                }
+            },
+            watch: {
+                input: {
+                    handler: "getVal",
+                    deep: true
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
