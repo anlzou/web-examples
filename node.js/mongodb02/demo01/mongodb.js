@@ -2,15 +2,15 @@
  * @Date        : 2020-10-21 10:20:14
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-21 10:58:08
- * @FilePath    : \mongodb02\demo01\app.js
+ * @LastEditTime: 2020-10-21 17:15:07
+ * @FilePath    : \mongodb02\demo01\mongodb.js
  * @Describe    : 
  */
 var MongoClient = require('mongodb').MongoClient;
 var options = {
-         db_user: "admin",//添加的普通账户名
-         db_pwd: "123456",
-         db_host: "120.25.249.101",
+         db_user: "xx",//添加的普通账户名
+         db_pwd: "xx",
+         db_host: "xx",
          db_port: 27017,
          db_name: "test",//数据库名称
          useNewUrlParser: true
