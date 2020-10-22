@@ -2,7 +2,7 @@
  * @Date        : 2020-10-22 10:27:49
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-22 16:07:47
+ * @LastEditTime: 2020-10-22 20:01:57
  * @FilePath    : \js\es6\moudle\README.md
  * @Describe    : 
 -->
@@ -150,7 +150,33 @@ define(function (require) {
 </script>
 ```
 
-- ### ES6：
-```
+- ### ES6：浏览器端模块加载规范
+1. 需要webpack打包，ES6->ES5
+```js
+/**
+ * path: src/modules/module.js
+*/
 
+function foo() {
+    console.log('module2 foo is called')
+}
+
+let bar = function () {
+    console.log('module2 bar is called')
+}
+
+const MODULE2_ARR = ["A", "B"]
+
+// 不暴露bar模块
+export default { foo, MODULE2_ARR }
+
+/**
+ * path: src/main.js
+*/
+import module2 from './modules/module.js';
+
+module.foo()
+```
+```html
+<script src="./dist/bundle.js"></script>
 ```
