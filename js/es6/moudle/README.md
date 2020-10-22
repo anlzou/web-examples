@@ -1,47 +1,33 @@
 <!--
- * @Date        : 2020-10-21 22:48:27
+ * @Date        : 2020-10-22 10:27:49
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-22 08:46:24
+ * @LastEditTime: 2020-10-22 11:41:45
  * @FilePath    : \js\es6\moudle\README.md
  * @Describe    : 
 -->
-# ES6模块&服务器端代码打包到浏览器端运行
-## 实现模块化
-需要创建`package.json`文件
+# 服务端与客户端模块化开发——四种模加载规范
+## 学习课程
+- [course-22634](http://e-learning.51cto.com/course/22634)
+
+## 规范
+- CommonJS：服务器同步模块加载
 ```
-npm init -y
+1. 结合wbpack打包成浏览器端运行的代码
 ```
-添加
-```json
-"type":"module"
+- AMD：浏览器端异步模块加载
+```
+Require.js
+1. 不需要打包
+```
+- CMD：浏览器端同异步模块加载
+```
+Sea.js
+1. Sea.js 是一个开源项目，目前由阿里、腾讯等公司共同维护。
+2. 支持同步&异步引入
+3. 开发厂商：阿里，项目已不维护
+```
+- ES6：
 ```
 
-### 例如
-```json
-{
-  "name": "moudle",
-  "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
-  "type":"module",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-}
-```
-
-## 打包
-安装webpack
-```
-npm i -D webpack webpack-cli
-```
-
-### 指令
-```
-# npx 自动找到包
-npx webpack -v
 ```
