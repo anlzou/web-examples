@@ -1,15 +1,13 @@
 /*
- * @Date        : 2020-10-23 09:49:01
+ * @Date        : 2020-10-23 10:06:58
  * @LastEditors : anlzou
  * @Github      : https://github.com/anlzou
- * @LastEditTime: 2020-10-23 10:24:35
- * @FilePath    : \vue-course23031\project_Mock.js&Axios.js\axios01\app3.js
- * @Describe    :
+ * @LastEditTime: 2020-10-23 10:26:01
+ * @FilePath    : \vue-course23031\project_Mock.js&Axios.js\mock_and_axios_example\src\main.js
+ * @Describe    : 
  */
-/**
- * 请求拦截
-*/
 const axios = require("axios")
+const Mock = require('mockjs')
 
 // 实例化
 const myAxios = axios.create();
@@ -42,3 +40,14 @@ myAxios.request({
 }).then(res => {
     console.log(res);
 });
+
+//mock 拦截，并随机生成填充数据
+Mock.mock('https://cdn.liyanhui.com/data.json', {
+    'list|5-10': [{
+        'id|+1': 1,
+        'username': '@cname',
+        'email': '@email',
+        'price': '@integer',
+        'gender': '@boolean'
+    }]
+})
