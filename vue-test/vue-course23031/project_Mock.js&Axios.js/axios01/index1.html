@@ -1,0 +1,60 @@
+<!--
+ * @Date        : 2020-10-22 21:55:04
+ * @LastEditors : anlzou
+ * @Github      : https://github.com/anlzou
+ * @LastEditTime: 2020-10-23 09:48:47
+ * @FilePath    : \vue-course23031\project_Mock.js&Axios.js\axios01\index1.html
+ * @Describe    : 
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <title>Document</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="./app3.js">
+        const cross_domain = "http://cdn.liyanhui.com/data.json"
+        const uncross_domain = "https://cdn.ycku.com/data.json"
+
+        /**
+         * 在node环境下支持可跨域与不可跨域请求
+         * 浏览器环境不支持不可跨域请求
+        */
+        // axios.get(cross_domain)
+        //     .then(result => {
+        //         console.log(result.data)
+        //     })
+        //     .catch(error => {
+        //         console.log(error)
+        //     })
+
+        /**
+         * 并发访问
+        */
+        // axios.all([
+        //     axios({
+        //         url: 'https://cdn.liyanhui.com/data.json',
+        //         data: '1.异步'
+        //     }),
+        //     axios({
+        //         url: 'https://cdn.liyanhui.com/data.json',
+        //         data: '2.异步'
+        //     }),
+        //     axios({
+        //         url: 'https://cdn.liyanhui.com/data.json',
+        //         data: '3.异步'
+        //     }),
+        // ])then(axios.spread((res1, res2, res3) => {
+        //     console.log(res1.config.data);
+        //     console.log(res2.config.data);
+        //     console.log(res3.config.data);
+        // }))
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>
