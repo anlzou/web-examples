@@ -10,7 +10,7 @@
 /**
  * mongodb是最原始的驱动mongoose，是基bai于mongodb的du封装，mongoose更节省代zhi码量，
  * mongodb支持原生的mongo数据库的命令写法和最新dao的语法Mongoose只不1653过是封装了MongoDB的操作的一个对象模型库
- * */  
+ * */
 var mongoose = require('mongoose');
 
 var options = {
@@ -22,7 +22,7 @@ var options = {
     useNewUrlParser: true
 };
 
-var dbURL = "mongodb://" + options.db_user + ":" + options.db_pwd + "@" + options.db_host + ":" + options.db_port + "/" + options.db_name+"?authSource=admin";
+var dbURL = "mongodb://" + options.db_user + ":" + options.db_pwd + "@" + options.db_host + ":" + options.db_port + "/" + options.db_name + "?authSource=admin";
 mongoose.connect(dbURL);// 连接数据库
 
 var Schema = mongoose.Schema
@@ -72,7 +72,7 @@ var Schema = mongoose.Schema
 //             console.log('保存失败')
 //         } else {
 //             console.log('保存成功')
-            
+
 //             console.log(ret)
 //         }
 //     })
